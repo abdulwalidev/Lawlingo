@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lawlingo – Learn Law Daily</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #58CC02;
+    --green-dark: #46A302;
+    --green-light: #D7F5A4;
+    --blue: #1CB0F6;
+    --blue-dark: #0A91D1;
+    --red: #FF4B4B;
+    --red-light: #FFD6D6;
+    --yellow: #FFC800;
+    --yellow-light: #FFF6CC;
+    --purple: #CE82FF;
+    --purple-dark: #9C44E8;
+    --orange: #FF9600;
+    --gray-100: #F7F7F7;
+    --gray-200: #E5E5E5;
+    --gray-300: #AFAFAF;
+    --gray-500: #777;
+    --gray-700: #4B4B4B;
+    --dark: #1f1f1f;
+    --white: #fff;
+    --bg: #F0F4F4;
+    --shadow: 0 4px 0;
+    --radius: 16px;
+    --font: 'Nunito', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font); background: var(--bg); color: var(--dark); min-height: 100vh; overflow-x: hidden; }
+
+  /* ===== SCREENS ===== */
+  .screen { display: none; min-height: 100vh; }
+  .screen.active { display: flex; flex-direction: column; }
+
+  /* ===== SPLASH ===== */
+  #screen-splash {
+    background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    align-items: center; justify-content: center; gap: 24px; padding: 40px 20px;
+  }
+  .splash-owl {
+    width: 120px; height: 120px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 64px;
+    box-shadow: 0 8px 32px rgba(255,200,0,0.4);
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+  .splash h1 { font-size: 42px; font-weight: 900; color: var(--white); letter-spacing: -1px; text-align: center; }
+  .splash h1 span { color: var(--yellow); }
+  .splash p { color: rgba(255,255,255,0.7); font-size: 17px; text-align: center; max-width: 300px; }
+  .btn { border: none; border-radius: 12px; font-family: var(--font); font-weight: 800; cursor: pointer; transition: all 0.15s; }
+  .btn:active { transform: translateY(2px); }
+  .btn-primary { background: var(--green); color: #fff; padding: 16px 48px; font-size: 17px; box-shadow: var(--shadow) var(--green-dark); width: 100%; max-width: 320px; }
+  .btn-primary:hover { background: #63d902; }
+  .btn-secondary { background: transparent; color: var(--blue); border: 2px solid var(--blue); padding: 14px 48px; font-size: 16px; width: 100%; max-width: 320px; }
+  .btn-secondary:hover { background: rgba(28,176,246,0.08); }
+  .btn-ghost { background: transparent; color: rgba(255,255,255,0.6); font-size: 15px; padding: 12px; }
+
+  /* ===== ONBOARDING ===== */
+  #screen-onboard { background: var(--white); }
+  .onboard-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 24px; gap: 24px; }
+  .progress-bar-wrap { width: 100%; max-width: 440px; display: flex; align-items: center; gap: 12px; padding: 16px 24px 0; }
+  .back-btn { background: none; border: none; font-size: 22px; cursor: pointer; color: var(--gray-500); padding: 4px 8px; }
+  .progress-bar-track { flex: 1; height: 8px; background: var(--gray-200); border-radius: 4px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--blue); border-radius: 4px; transition: width 0.4s ease; }
+  .ob-step { display: none; flex-direction: column; align-items: center; gap: 20px; width: 100%; max-width: 380px; }
+  .ob-step.active { display: flex; }
+  .ob-emoji { font-size: 72px; }
+  .ob-title { font-size: 26px; font-weight: 900; text-align: center; line-height: 1.2; }
+  .ob-sub { font-size: 16px; color: var(--gray-500); text-align: center; }
+  .ob-options { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+  .ob-option {
+    padding: 16px 20px; border: 2px solid var(--gray-200); border-radius: 14px;
+    font-family: var(--font); font-weight: 700; font-size: 16px; cursor: pointer;
+    background: var(--white); color: var(--dark); display: flex; align-items: center; gap: 14px;
+    transition: all 0.15s;
+  }
+  .ob-option:hover { border-color: var(--blue); background: rgba(28,176,246,0.05); }
+  .ob-option.selected { border-color: var(--blue); background: rgba(28,176,246,0.1); color: var(--blue-dark); }
+  .ob-option .ob-opt-icon { font-size: 28px; }
+  .goal-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+  .goal-btn {
+    padding: 20px 12px; border: 2px solid var(--gray-200); border-radius: 14px;
+    font-family: var(--font); font-weight: 800; font-size: 14px; cursor: pointer;
+    background: var(--white); text-align: center; transition: all 0.15s;
+    display: flex; flex-direction: column; gap: 6px; align-items: center;
+  }
+  .goal-btn .xp { font-size: 22px; font-weight: 900; color: var(--orange); }
+  .goal-btn:hover { border-color: var(--orange); }
+  .goal-btn.selected { border-color: var(--orange); background: var(--yellow-light); }
+
+  /* ===== MAIN APP SHELL ===== */
+  #screen-app { background: var(--bg); flex-direction: row; }
+  .sidebar {
+    width: 240px; background: var(--white); border-right: 2px solid var(--gray-200);
+    display: flex; flex-direction: column; padding: 24px 16px; gap: 4px;
+    position: sticky; top: 0; height: 100vh; overflow-y: auto;
+  }
+  .sidebar-logo { font-size: 22px; font-weight: 900; color: var(--green-dark); padding: 8px 12px 20px; display: flex; align-items: center; gap: 8px; }
+  .sidebar-logo span { font-size: 26px; }
+  .nav-item {
+    display: flex; align-items: center; gap: 14px; padding: 12px 14px;
+    border-radius: 12px; cursor: pointer; font-weight: 700; font-size: 15px;
+    color: var(--gray-500); transition: all 0.15s; border: none; background: none; font-family: var(--font);
+    width: 100%; text-align: left;
+  }
+  .nav-item:hover { background: var(--gray-100); color: var(--dark); }
+  .nav-item.active { background: rgba(88,204,2,0.12); color: var(--green-dark); }
+  .nav-item .nav-icon { font-size: 22px; width: 28px; text-align: center; }
+
+  .main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; max-width: 800px; margin: 0 auto; padding: 32px 24px; }
+  .right-panel { width: 320px; padding: 24px 20px; display: flex; flex-direction: column; gap: 20px; }
+
+  /* ===== TAB VIEWS ===== */
+  .tab-view { display: none; }
+  .tab-view.active { display: block; }
+
+  /* ===== STREAK/XP BAR (top) ===== */
+  .top-stats { display: flex; gap: 20px; align-items: center; margin-bottom: 28px; }
+  .stat-chip {
+    display: flex; align-items: center; gap: 8px; padding: 10px 16px;
+    background: var(--white); border-radius: 50px; font-weight: 800; font-size: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .stat-chip .icon { font-size: 20px; }
+  .stat-chip.streak { color: var(--orange); }
+  .stat-chip.xp { color: var(--blue); }
+  .stat-chip.hearts { color: var(--red); }
+  .stat-chip.gems { color: var(--purple); }
+
+  /* ===== COURSE PATH ===== */
+  .course-section-header {
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--blue); color: white; border-radius: 16px;
+    padding: 18px 24px; margin-bottom: 20px;
+  }
+  .course-section-header h3 { font-size: 18px; font-weight: 900; }
+  .course-section-header p { font-size: 13px; opacity: 0.8; margin-top: 3px; }
+  .section-badge { background: rgba(255,255,255,0.2); padding: 8px 14px; border-radius: 10px; font-weight: 800; font-size: 13px; }
+  .skill-path { display: flex; flex-direction: column; align-items: center; gap: 16px; padding-bottom: 40px; }
+  .skill-row { display: flex; justify-content: center; gap: 24px; }
+  .skill-node {
+    width: 80px; height: 80px; border-radius: 50%; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; cursor: pointer; position: relative;
+    font-size: 28px; transition: transform 0.15s; border: none;
+  }
+  .skill-node:hover { transform: scale(1.08); }
+  .skill-node.locked { background: var(--gray-200); box-shadow: var(--shadow) var(--gray-300); filter: grayscale(1); cursor: not-allowed; }
+  .skill-node.locked:hover { transform: none; }
+  .skill-node.available { background: var(--green); box-shadow: var(--shadow) var(--green-dark); }
+  .skill-node.in-progress { background: var(--yellow); box-shadow: var(--shadow) #c99a00; }
+  .skill-node.completed { background: var(--green); box-shadow: var(--shadow) var(--green-dark); }
+  .skill-node.completed::after {
+    content: '✓'; position: absolute; top: -4px; right: -4px;
+    background: var(--blue); color: white; width: 22px; height: 22px;
+    border-radius: 50%; font-size: 12px; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .skill-label { font-size: 11px; font-weight: 800; color: var(--gray-700); margin-top: 6px; text-align: center; max-width: 90px; line-height: 1.2; }
+  .skill-node-wrap { display: flex; flex-direction: column; align-items: center; }
+  .connector { width: 4px; height: 32px; background: var(--gray-200); border-radius: 2px; }
+  .connector.done { background: var(--green); }
+
+  /* ===== LESSON SCREEN ===== */
+  #screen-lesson { background: var(--white); }
+  .lesson-header { display: flex; align-items: center; gap: 16px; padding: 20px 24px; border-bottom: 2px solid var(--gray-200); }
+  .close-btn { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--gray-300); transition: color 0.15s; }
+  .close-btn:hover { color: var(--gray-700); }
+  .lesson-progress-track { flex: 1; height: 10px; background: var(--gray-200); border-radius: 5px; overflow: hidden; }
+  .lesson-progress-fill { height: 100%; background: var(--green); border-radius: 5px; transition: width 0.4s ease; }
+  .hearts-display { display: flex; gap: 4px; }
+  .heart { font-size: 22px; transition: all 0.3s; }
+  .heart.lost { filter: grayscale(1); opacity: 0.3; }
+
+  .lesson-body { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 32px 24px; max-width: 600px; margin: 0 auto; width: 100%; gap: 24px; }
+  .q-type-badge { background: var(--gray-100); color: var(--gray-500); font-size: 13px; font-weight: 700; padding: 6px 14px; border-radius: 20px; }
+  .q-instruction { font-size: 22px; font-weight: 800; text-align: center; }
+  .q-context { background: var(--gray-100); border-radius: 14px; padding: 16px 20px; font-size: 16px; line-height: 1.6; color: var(--gray-700); max-width: 500px; width: 100%; text-align: center; border-left: 4px solid var(--blue); }
+  .q-context strong { color: var(--dark); }
+  .answers-grid { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 500px; }
+  .answers-grid.two-col { display: grid; grid-template-columns: 1fr 1fr; }
+  .answer-btn {
+    padding: 16px 20px; border: 2.5px solid var(--gray-200); border-radius: 14px; background: var(--white);
+    font-family: var(--font); font-weight: 700; font-size: 16px; cursor: pointer; text-align: left;
+    transition: all 0.15s; display: flex; align-items: center; gap: 12px; color: var(--dark);
+    box-shadow: 0 2px 0 var(--gray-200);
+  }
+  .answer-btn:hover:not(:disabled) { border-color: var(--blue); background: rgba(28,176,246,0.05); box-shadow: 0 2px 0 var(--blue); }
+  .answer-btn.selected { border-color: var(--blue); background: rgba(28,176,246,0.1); box-shadow: 0 2px 0 var(--blue-dark); color: var(--blue-dark); }
+  .answer-btn.correct { border-color: var(--green); background: rgba(88,204,2,0.1); box-shadow: 0 2px 0 var(--green-dark); color: var(--green-dark); }
+  .answer-btn.wrong { border-color: var(--red); background: var(--red-light); box-shadow: 0 2px 0 #c93636; color: var(--red); }
+  .answer-btn:disabled { cursor: default; }
+  .answer-letter { width: 32px; height: 32px; border-radius: 8px; border: 2px solid var(--gray-200); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0; }
+  .answer-btn.selected .answer-letter { border-color: var(--blue); background: var(--blue); color: white; }
+  .answer-btn.correct .answer-letter { border-color: var(--green); background: var(--green); color: white; }
+  .answer-btn.wrong .answer-letter { border-color: var(--red); background: var(--red); color: white; }
+
+  /* fill-in */
+  .fill-input {
+    width: 100%; max-width: 500px; padding: 16px 20px; border: 2.5px solid var(--gray-200);
+    border-radius: 14px; font-family: var(--font); font-size: 18px; font-weight: 700;
+    text-align: center; outline: none; transition: border-color 0.15s;
+  }
+  .fill-input:focus { border-color: var(--blue); }
+  .fill-input.correct { border-color: var(--green); background: rgba(88,204,2,0.08); color: var(--green-dark); }
+  .fill-input.wrong { border-color: var(--red); background: var(--red-light); color: var(--red); }
+
+  /* match pairs */
+  .match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; max-width: 500px; }
+  .match-btn {
+    padding: 14px 12px; border: 2.5px solid var(--gray-200); border-radius: 12px;
+    font-family: var(--font); font-weight: 700; font-size: 14px; cursor: pointer;
+    background: var(--white); transition: all 0.15s; text-align: center;
+  }
+  .match-btn:hover:not(:disabled):not(.matched) { border-color: var(--purple); background: rgba(206,130,255,0.08); }
+  .match-btn.selected-match { border-color: var(--purple); background: rgba(206,130,255,0.15); color: var(--purple-dark); }
+  .match-btn.matched { border-color: var(--green); background: rgba(88,204,2,0.1); color: var(--green-dark); cursor: default; }
+  .match-btn.wrong-match { border-color: var(--red); background: var(--red-light); animation: shake 0.3s; }
+  @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+
+  /* result footer */
+  .lesson-footer { padding: 20px 24px; border-top: 2px solid var(--gray-200); max-width: 600px; margin: 0 auto; width: 100%; }
+  .check-btn { width: 100%; padding: 16px; background: var(--gray-200); color: var(--gray-400); border: none; border-radius: 12px; font-family: var(--font); font-weight: 800; font-size: 17px; cursor: not-allowed; transition: all 0.2s; }
+  .check-btn.ready { background: var(--green); color: white; box-shadow: 0 4px 0 var(--green-dark); cursor: pointer; }
+  .check-btn.ready:hover { background: #63d902; }
+  .result-panel { padding: 20px 24px; border-radius: 16px 16px 0 0; }
+  .result-panel.correct-panel { background: rgba(88,204,2,0.1); border-top: 2px solid var(--green); }
+  .result-panel.wrong-panel { background: var(--red-light); border-top: 2px solid var(--red); }
+  .result-header { font-size: 20px; font-weight: 900; display: flex; align-items: center; gap: 10px; }
+  .result-header.correct-txt { color: var(--green-dark); }
+  .result-header.wrong-txt { color: var(--red); }
+  .result-answer { font-size: 15px; color: var(--gray-700); margin-top: 6px; }
+  .result-continue { float: right; padding: 14px 36px; border: none; border-radius: 12px; font-family: var(--font); font-weight: 800; font-size: 16px; cursor: pointer; }
+  .result-continue.green { background: var(--green); color: white; box-shadow: 0 4px 0 var(--green-dark); }
+  .result-continue.red { background: var(--red); color: white; box-shadow: 0 4px 0 #c93636; }
+
+  /* ===== LESSON COMPLETE ===== */
+  #screen-complete { background: var(--white); align-items: center; justify-content: center; text-align: center; padding: 40px 24px; gap: 20px; }
+  .complete-owl { font-size: 80px; animation: bounce 1.5s infinite; }
+  .complete-title { font-size: 32px; font-weight: 900; color: var(--green-dark); }
+  .xp-earned { background: var(--yellow-light); border-radius: 14px; padding: 16px 32px; }
+  .xp-earned .big { font-size: 36px; font-weight: 900; color: var(--orange); }
+  .xp-earned .label { font-size: 14px; color: var(--gray-500); font-weight: 700; margin-top: 2px; }
+  .stats-row { display: flex; gap: 20px; justify-content: center; }
+  .stat-box { background: var(--gray-100); border-radius: 14px; padding: 16px 24px; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .stat-box .val { font-size: 24px; font-weight: 900; }
+  .stat-box .lbl { font-size: 12px; color: var(--gray-500); font-weight: 700; }
+
+  /* ===== LEADERBOARD ===== */
+  .leaderboard-wrap { max-width: 520px; margin: 0 auto; }
+  .leaderboard-header { text-align: center; margin-bottom: 24px; }
+  .leaderboard-header h2 { font-size: 28px; font-weight: 900; }
+  .leaderboard-header p { color: var(--gray-500); font-size: 15px; margin-top: 4px; }
+  .league-badge { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #FFD700, #FFA500); color: white; padding: 8px 20px; border-radius: 20px; font-weight: 800; font-size: 15px; margin-bottom: 16px; }
+  .lb-row {
+    display: flex; align-items: center; gap: 14px; padding: 14px 18px;
+    background: var(--white); border-radius: 14px; margin-bottom: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .lb-row.you { border: 2px solid var(--blue); background: rgba(28,176,246,0.05); }
+  .lb-rank { width: 28px; text-align: center; font-weight: 900; font-size: 16px; color: var(--gray-500); }
+  .lb-rank.gold { color: #FFD700; font-size: 20px; }
+  .lb-rank.silver { color: #C0C0C0; font-size: 20px; }
+  .lb-rank.bronze { color: #CD7F32; font-size: 20px; }
+  .lb-avatar { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; background: var(--gray-100); }
+  .lb-name { flex: 1; font-weight: 700; font-size: 15px; }
+  .lb-name small { display: block; font-size: 12px; color: var(--gray-500); font-weight: 600; }
+  .lb-xp { font-weight: 900; font-size: 16px; color: var(--orange); }
+  .lb-xp small { font-size: 11px; color: var(--gray-500); }
+
+  /* ===== PROFILE ===== */
+  .profile-wrap { max-width: 520px; margin: 0 auto; }
+  .profile-card { background: var(--white); border-radius: 20px; padding: 28px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); margin-bottom: 20px; }
+  .profile-top { display: flex; align-items: center; gap: 20px; }
+  .profile-avatar { width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--purple)); display: flex; align-items: center; justify-content: center; font-size: 36px; }
+  .profile-name { font-size: 22px; font-weight: 900; }
+  .profile-joined { font-size: 13px; color: var(--gray-500); font-weight: 600; margin-top: 2px; }
+  .profile-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 20px; }
+  .p-stat { text-align: center; }
+  .p-stat .v { font-size: 22px; font-weight: 900; }
+  .p-stat .l { font-size: 12px; color: var(--gray-500); font-weight: 700; }
+  .achievements-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .achievement {
+    background: var(--white); border-radius: 14px; padding: 16px 12px; text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .achievement .a-icon { font-size: 32px; }
+  .achievement .a-name { font-size: 13px; font-weight: 800; margin-top: 6px; }
+  .achievement .a-desc { font-size: 11px; color: var(--gray-500); margin-top: 2px; }
+  .achievement.locked { filter: grayscale(1); opacity: 0.5; }
+
+  /* ===== RIGHT PANEL WIDGETS ===== */
+  .widget { background: var(--white); border-radius: 16px; padding: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .widget h4 { font-size: 15px; font-weight: 800; margin-bottom: 12px; color: var(--gray-700); }
+  .streak-fire { font-size: 40px; text-align: center; display: block; }
+  .streak-days { font-size: 32px; font-weight: 900; text-align: center; color: var(--orange); }
+  .streak-label { font-size: 13px; color: var(--gray-500); text-align: center; font-weight: 700; }
+  .streak-week { display: flex; justify-content: space-between; margin-top: 14px; }
+  .day-dot { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .day-dot .d { width: 32px; height: 32px; border-radius: 50%; background: var(--gray-200); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+  .day-dot .d.done { background: var(--orange); }
+  .day-dot .d.today { background: var(--orange); box-shadow: 0 0 0 3px rgba(255,150,0,0.3); }
+  .day-dot span { font-size: 10px; color: var(--gray-500); font-weight: 700; }
+  .xp-bar-wrap { margin-top: 8px; }
+  .xp-bar-track { height: 12px; background: var(--gray-200); border-radius: 6px; overflow: hidden; }
+  .xp-bar-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--purple)); border-radius: 6px; transition: width 0.5s ease; }
+  .xp-goal-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--gray-500); font-weight: 700; margin-top: 6px; }
+
+  /* ===== TOAST ===== */
+  .toast {
+    position: fixed; top: 24px; left: 50%; transform: translateX(-50%) translateY(-80px);
+    background: var(--dark); color: white; padding: 12px 24px; border-radius: 50px;
+    font-weight: 700; font-size: 15px; transition: transform 0.3s; z-index: 9999;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+
+  /* ===== MOBILE NAV ===== */
+  .mobile-nav { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--white); border-top: 2px solid var(--gray-200); display: none; justify-content: space-around; padding: 8px 0 12px; z-index: 100; }
+  .mn-item { display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 11px; font-weight: 700; color: var(--gray-500); cursor: pointer; padding: 4px 16px; background: none; border: none; font-family: var(--font); }
+  .mn-item .mn-icon { font-size: 22px; }
+  .mn-item.active { color: var(--green-dark); }
+
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .right-panel { display: none; }
+    .mobile-nav { display: flex !important; }
+    .main-content { padding: 16px 16px 80px; }
+    #screen-app { flex-direction: column; }
+  }
+  @media (max-width: 600px) {
+    .stats-row { gap: 12px; }
+    .achievements-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  /* ===== COURSES TAB ===== */
+  .courses-wrap { max-width: 560px; margin: 0 auto; }
+  .courses-header { margin-bottom: 24px; }
+  .courses-header h2 { font-size: 28px; font-weight: 900; }
+  .courses-header p { color: var(--gray-500); font-size: 15px; margin-top: 4px; }
+  .courses-section-label { font-size: 12px; font-weight: 800; color: var(--gray-500); letter-spacing: 1px; margin-bottom: 12px; }
+  .course-card {
+    background: var(--white); border-radius: 18px; padding: 18px 20px;
+    display: flex; align-items: center; gap: 16px; margin-bottom: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06); border: 2px solid transparent;
+    transition: all 0.15s;
+  }
+  .course-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.1); }
+  .course-card.active-course { border-color: var(--green); background: rgba(88,204,2,0.04); }
+  .course-icon-wrap { width: 56px; height: 56px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+  .course-info { flex: 1; }
+  .course-info .c-name { font-size: 17px; font-weight: 800; }
+  .course-info .c-sub { font-size: 13px; color: var(--gray-500); font-weight: 600; margin-top: 2px; }
+  .course-progress-bar { height: 6px; background: var(--gray-200); border-radius: 3px; margin-top: 8px; overflow: hidden; }
+  .course-progress-fill { height: 100%; border-radius: 3px; transition: width 0.4s; }
+  .course-action { flex-shrink: 0; }
+  .btn-switch { background: var(--green); color: white; border: none; border-radius: 10px; padding: 8px 16px; font-family: var(--font); font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 3px 0 var(--green-dark); }
+  .btn-switch.current { background: var(--gray-200); color: var(--gray-500); box-shadow: none; cursor: default; }
+  .btn-enroll { background: var(--blue); color: white; border: none; border-radius: 10px; padding: 8px 16px; font-family: var(--font); font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 3px 0 var(--blue-dark); transition: all 0.15s; }
+  .btn-enroll.enrolled-btn { background: var(--gray-200); color: var(--gray-500); box-shadow: none; cursor: default; }
+</style>
+</head>
+<body>
+
+<!-- SPLASH -->
+<div id="screen-splash" class="screen active splash">
+  <div class="splash-owl">⚖️</div>
+  <h1>Law<span>lingo</span></h1>
+  <p>Master law through daily bite-sized lessons. Make learning the law actually fun.</p>
+  <button class="btn btn-primary" onclick="startOnboarding()">GET STARTED</button>
+  <button class="btn btn-secondary" style="color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.3)" onclick="skipToApp()">I ALREADY HAVE AN ACCOUNT</button>
+</div>
+
+<!-- ONBOARDING -->
+<div id="screen-onboard" class="screen">
+  <div class="progress-bar-wrap">
+    <button class="back-btn" onclick="onboardBack()">✕</button>
+    <div class="progress-bar-track"><div class="progress-bar-fill" id="ob-progress" style="width:0%"></div></div>
+  </div>
+  <div class="onboard-wrap">
+
+    <!-- Step 1: Goal -->
+    <div class="ob-step active" id="ob-step-1">
+      <div class="ob-emoji">🎯</div>
+      <div class="ob-title">What's your goal?</div>
+      <div class="ob-sub">We'll build your plan around it.</div>
+      <div class="ob-options">
+        <button class="ob-option" onclick="selectOb(this,'goal','career')"><span class="ob-opt-icon">💼</span> Advance my legal career</button>
+        <button class="ob-option" onclick="selectOb(this,'goal','study')"><span class="ob-opt-icon">📚</span> Study for bar/law exams</button>
+        <button class="ob-option" onclick="selectOb(this,'goal','curiosity')"><span class="ob-opt-icon">🧠</span> Satisfy my curiosity</button>
+        <button class="ob-option" onclick="selectOb(this,'goal','rights')"><span class="ob-opt-icon">🛡️</span> Know my legal rights</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Area -->
+    <div class="ob-step" id="ob-step-2">
+      <div class="ob-emoji">📖</div>
+      <div class="ob-title">Which area interests you most?</div>
+      <div class="ob-sub">You can explore others later.</div>
+      <div class="ob-options">
+        <button class="ob-option" onclick="selectOb(this,'area','constitutional')"><span class="ob-opt-icon">🏛️</span> Constitutional Law</button>
+        <button class="ob-option" onclick="selectOb(this,'area','criminal')"><span class="ob-opt-icon">🔍</span> Criminal Law</button>
+        <button class="ob-option" onclick="selectOb(this,'area','contract')"><span class="ob-opt-icon">📝</span> Contract Law</button>
+        <button class="ob-option" onclick="selectOb(this,'area','tort')"><span class="ob-opt-icon">⚖️</span> Tort Law</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Daily goal -->
+    <div class="ob-step" id="ob-step-3">
+      <div class="ob-emoji">🔥</div>
+      <div class="ob-title">Set a daily goal</div>
+      <div class="ob-sub">Small habits lead to big results.</div>
+      <div class="goal-btns">
+        <button class="goal-btn" onclick="selectGoal(this,10)"><div class="xp">10</div><div>XP / day</div><div style="font-size:12px;color:var(--gray-500)">Casual</div></button>
+        <button class="goal-btn selected" onclick="selectGoal(this,20)"><div class="xp">20</div><div>XP / day</div><div style="font-size:12px;color:var(--gray-500)">Regular</div></button>
+        <button class="goal-btn" onclick="selectGoal(this,30)"><div class="xp">30</div><div>XP / day</div><div style="font-size:12px;color:var(--gray-500)">Serious</div></button>
+        <button class="goal-btn" onclick="selectGoal(this,50)"><div class="xp">50</div><div>XP / day</div><div style="font-size:12px;color:var(--gray-500)">Intense</div></button>
+      </div>
+    </div>
+
+    <!-- Step 4: Notification -->
+    <div class="ob-step" id="ob-step-4">
+      <div class="ob-emoji">🔔</div>
+      <div class="ob-title">Don't break your streak!</div>
+      <div class="ob-sub">Get a reminder so you never miss a day.</div>
+      <div class="ob-options">
+        <button class="ob-option selected" onclick="selectOb(this,'notif','morning')"><span class="ob-opt-icon">🌅</span> Morning (8 AM)</button>
+        <button class="ob-option" onclick="selectOb(this,'notif','evening')"><span class="ob-opt-icon">🌙</span> Evening (7 PM)</button>
+        <button class="ob-option" onclick="selectOb(this,'notif','none')"><span class="ob-opt-icon">🚫</span> No thanks</button>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" id="ob-continue-btn" onclick="onboardNext()" style="margin-top:8px">CONTINUE</button>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="screen-app" class="screen">
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="sidebar-logo"><span>⚖️</span> Lawlingo</div>
+    <button class="nav-item active" onclick="showTab('learn')" id="nav-learn"><span class="nav-icon">📚</span> Learn</button>
+    <button class="nav-item" onclick="showTab('courses')" id="nav-courses"><span class="nav-icon">🎓</span> Courses</button>
+    <button class="nav-item" onclick="showTab('leaderboard')" id="nav-leaderboard"><span class="nav-icon">🏆</span> Leaderboard</button>
+    <button class="nav-item" onclick="showTab('profile')" id="nav-profile"><span class="nav-icon">👤</span> Profile</button>
+  </nav>
+
+  <!-- MAIN -->
+  <div class="main-content">
+    <!-- LEARN TAB -->
+    <div class="tab-view active" id="tab-learn">
+      <div class="top-stats">
+        <div class="stat-chip streak"><span class="icon">🔥</span> <span id="streak-val">3</span></div>
+        <div class="stat-chip xp"><span class="icon">⚡</span> <span id="xp-val">60</span> XP</div>
+        <div class="stat-chip hearts"><span class="icon">❤️</span> <span id="hearts-val">5</span></div>
+        <div class="stat-chip gems"><span class="icon">💎</span> <span id="gems-val">120</span></div>
+      </div>
+
+      <!-- Section: Criminal Law -->
+      <div class="course-section-header" style="background:linear-gradient(135deg,#1CB0F6,#0A91D1)">
+        <div><h3>🔍 Criminal Law</h3><p>Unit 1 · Foundations of Crime</p></div>
+        <div class="section-badge">Section 1</div>
+      </div>
+      <div class="skill-path">
+        <div class="skill-row">
+          <div class="skill-node-wrap">
+            <button class="skill-node completed" onclick="startLesson('criminal-basics')">⚖️</button>
+            <div class="skill-label">Elements of Crime</div>
+          </div>
+        </div>
+        <div class="connector done"></div>
+        <div class="skill-row">
+          <div class="skill-node-wrap">
+            <button class="skill-node in-progress" onclick="startLesson('mens-rea')">🧠</button>
+            <div class="skill-label">Mens Rea</div>
+          </div>
+        </div>
+        <div class="connector"></div>
+        <div class="skill-row">
+          <div class="skill-node-wrap" style="opacity:0.6">
+            <button class="skill-node locked" disabled>🚔</button>
+            <div class="skill-label">Actus Reus</div>
+          </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="skill-node-wrap" style="opacity:0.6">
+            <button class="skill-node locked" disabled>🏛️</button>
+            <div class="skill-label">Defenses</div>
+          </div>
+        </div>
+        <div class="connector"></div>
+        <div class="skill-row">
+          <div class="skill-node-wrap" style="opacity:0.6">
+            <button class="skill-node locked" disabled>📋</button>
+            <div class="skill-label">Sentencing</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Contract Law -->
+      <div class="course-section-header" style="background:linear-gradient(135deg,#58CC02,#46A302);margin-top:12px">
+        <div><h3>📝 Contract Law</h3><p>Unit 2 · Agreements & Obligations</p></div>
+        <div class="section-badge">Section 2</div>
+      </div>
+      <div class="skill-path">
+        <div class="skill-row">
+          <div class="skill-node-wrap" style="opacity:0.6">
+            <button class="skill-node locked" disabled>🤝</button>
+            <div class="skill-label">Offer & Acceptance</div>
+          </div>
+        </div>
+        <div class="connector"></div>
+        <div class="skill-row">
+          <div class="skill-node-wrap" style="opacity:0.6">
+            <button class="skill-node locked" disabled>💰</button>
+            <div class="skill-label">Consideration</div>
+          </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="skill-node-wrap" style="opacity:0.6">
+            <button class="skill-node locked" disabled>✍️</button>
+            <div class="skill-label">Capacity</div>
+          </div>
+        </div>
+        <div class="connector"></div>
+        <div class="skill-row">
+          <div class="skill-node-wrap" style="opacity:0.6">
+            <button class="skill-node locked" disabled>💥</button>
+            <div class="skill-label">Breach</div>
+          </div>
+        </div>
+        <div class="connector"></div>
+        <div class="skill-row">
+          <div class="skill-node-wrap" style="opacity:0.6">
+            <button class="skill-node locked" disabled>🔮</button>
+            <div class="skill-label">Remedies</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Constitutional -->
+      <div class="course-section-header" style="background:linear-gradient(135deg,#FF9600,#d07800);margin-top:12px">
+        <div><h3>🏛️ Constitutional Law</h3><p>Unit 3 · Rights & Powers</p></div>
+        <div class="section-badge">Section 3</div>
+      </div>
+      <div class="skill-path">
+        <div class="skill-row">
+          <div class="skill-node-wrap" style="opacity:0.6">
+            <button class="skill-node locked" disabled>📜</button>
+            <div class="skill-label">Bill of Rights</div>
+          </div>
+        </div>
+        <div class="connector"></div>
+        <div class="skill-row">
+          <div class="skill-node-wrap" style="opacity:0.6">
+            <button class="skill-node locked" disabled>🗳️</button>
+            <div class="skill-label">Due Process</div>
+          </div>
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="skill-node-wrap" style="opacity:0.6">
+            <button class="skill-node locked" disabled>🗽</button>
+            <div class="skill-label">Equal Protection</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COURSES TAB -->
+    <div class="tab-view" id="tab-courses">
+      <div class="courses-wrap">
+        <div class="courses-header"><h2>My Courses</h2><p>Switch between courses or enroll in new ones</p></div>
+        <div class="courses-section-label">📚 ENROLLED</div>
+        <div id="enrolled-list"></div>
+        <div class="courses-section-label" style="margin-top:28px">➕ ADD A COURSE</div>
+        <div id="available-list"></div>
+      </div>
+    </div>
+
+    <!-- LEADERBOARD TAB -->
+    <div class="tab-view" id="tab-leaderboard">
+      <div class="leaderboard-wrap">
+        <div class="leaderboard-header">
+          <div class="league-badge">🏆 Gold League</div>
+          <h2>This Week's Rankings</h2>
+          <p>Top 10 advance · Bottom 5 are demoted</p>
+        </div>
+        <div id="lb-list"></div>
+      </div>
+    </div>
+
+    <!-- PROFILE TAB -->
+    <div class="tab-view" id="tab-profile">
+      <div class="profile-wrap">
+        <div class="profile-card">
+          <div class="profile-top">
+            <div class="profile-avatar">⚖️</div>
+            <div>
+              <div class="profile-name">LawStudent42</div>
+              <div class="profile-joined">Joined May 2026 · Gold League</div>
+            </div>
+          </div>
+          <div class="profile-stats">
+            <div class="p-stat"><div class="v" id="prof-streak">3</div><div class="l">🔥 Day Streak</div></div>
+            <div class="p-stat"><div class="v" id="prof-xp">60</div><div class="l">⚡ Total XP</div></div>
+            <div class="p-stat"><div class="v">2</div><div class="l">📚 Courses</div></div>
+            <div class="p-stat"><div class="v">1</div><div class="l">🏆 Leagues</div></div>
+          </div>
+        </div>
+        <div class="profile-card">
+          <h3 style="font-size:18px;font-weight:900;margin-bottom:16px">🏅 Achievements</h3>
+          <div class="achievements-grid">
+            <div class="achievement"><div class="a-icon">🔥</div><div class="a-name">Hot Streak</div><div class="a-desc">3-day streak</div></div>
+            <div class="achievement"><div class="a-icon">⚡</div><div class="a-name">Quick Learner</div><div class="a-desc">First lesson done</div></div>
+            <div class="achievement"><div class="a-icon">🎯</div><div class="a-name">Perfect Score</div><div class="a-desc">100% on a lesson</div></div>
+            <div class="achievement locked"><div class="a-icon">🌟</div><div class="a-name">Week Warrior</div><div class="a-desc">7-day streak</div></div>
+            <div class="achievement locked"><div class="a-icon">🏛️</div><div class="a-name">Constitutionalist</div><div class="a-desc">Complete Unit 3</div></div>
+            <div class="achievement locked"><div class="a-icon">⚖️</div><div class="a-name">Bar Ready</div><div class="a-desc">Complete all units</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="right-panel">
+    <div class="widget">
+      <span class="streak-fire">🔥</span>
+      <div class="streak-days" id="rp-streak">3</div>
+      <div class="streak-label">Day Streak</div>
+      <div class="streak-week">
+        <div class="day-dot"><div class="d done">M</div><span>MON</span></div>
+        <div class="day-dot"><div class="d done">T</div><span>TUE</span></div>
+        <div class="day-dot"><div class="d done">W</div><span>WED</span></div>
+        <div class="day-dot"><div class="d today">T</div><span>THU</span></div>
+        <div class="day-dot"><div class="d">F</div><span>FRI</span></div>
+        <div class="day-dot"><div class="d">S</div><span>SAT</span></div>
+        <div class="day-dot"><div class="d">S</div><span>SUN</span></div>
+      </div>
+    </div>
+    <div class="widget">
+      <h4>Daily Goal</h4>
+      <div style="font-size:13px;color:var(--gray-500);margin-bottom:8px">⚡ <span id="rp-xp">60</span> / 20 XP today</div>
+      <div class="xp-bar-wrap">
+        <div class="xp-bar-track"><div class="xp-bar-fill" id="rp-xp-bar" style="width:100%"></div></div>
+        <div class="xp-goal-label"><span>0 XP</span><span>Goal: 20 XP ✓</span></div>
+      </div>
+    </div>
+    <div class="widget">
+      <h4>🏆 Gold League</h4>
+      <div style="font-size:13px;color:var(--gray-500);margin-bottom:10px">Top 10 advance this Sunday</div>
+      <div style="display:flex;align-items:center;gap:10px;padding:10px;background:rgba(28,176,246,0.08);border-radius:10px;border:2px solid var(--blue)">
+        <span style="font-size:18px;font-weight:900;color:var(--blue-dark)">#4</span>
+        <div style="flex:1"><div style="font-weight:700;font-size:14px">You</div><div style="font-size:12px;color:var(--gray-500)">60 XP this week</div></div>
+        <span>⚡</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LESSON SCREEN -->
+<div id="screen-lesson" class="screen">
+  <div class="lesson-header">
+    <button class="close-btn" onclick="exitLesson()">✕</button>
+    <div class="lesson-progress-track"><div class="lesson-progress-fill" id="lesson-progress" style="width:0%"></div></div>
+    <div class="hearts-display" id="hearts-display"></div>
+  </div>
+  <div class="lesson-body" id="lesson-body">
+    <!-- Questions injected here -->
+  </div>
+  <div class="lesson-footer" id="lesson-footer">
+    <button class="check-btn" id="check-btn" onclick="checkAnswer()">CHECK</button>
+  </div>
+</div>
+
+<!-- LESSON COMPLETE -->
+<div id="screen-complete" class="screen">
+  <div class="complete-owl">🎉</div>
+  <div class="complete-title">Lesson Complete!</div>
+  <div class="xp-earned">
+    <div class="big" id="comp-xp">+10 XP</div>
+    <div class="label">EXPERIENCE GAINED</div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-box"><div class="val" style="color:var(--green)" id="comp-acc">100%</div><div class="lbl">ACCURACY</div></div>
+    <div class="stat-box"><div class="val" style="color:var(--orange)" id="comp-streak">3</div><div class="lbl">DAY STREAK</div></div>
+    <div class="stat-box"><div class="val" style="color:var(--blue)" id="comp-time">0:45</div><div class="lbl">TIME</div></div>
+  </div>
+  <button class="btn btn-primary" onclick="continueFromComplete()">CONTINUE</button>
+</div>
+
+<!-- Mobile Nav -->
+<nav class="mobile-nav" id="mobile-nav">
+  <button class="mn-item active" id="mn-learn" onclick="showTab('learn')"><span class="mn-icon">📚</span>Learn</button>
+  <button class="mn-item" id="mn-courses" onclick="showTab('courses')"><span class="mn-icon">🎓</span>Courses</button>
+  <button class="mn-item" id="mn-leaderboard" onclick="showTab('leaderboard')"><span class="mn-icon">🏆</span>Leaderboard</button>
+  <button class="mn-item" id="mn-profile" onclick="showTab('profile')"><span class="mn-icon">👤</span>Profile</button>
+</nav>
+
+<!-- Toast -->
+<div class="toast" id="toast">🎉 Well done!</div>
+
+<script>
+// ===== STATE =====
+const state = {
+  obStep: 1,
+  obData: { goal: null, area: null, notif: 'morning' },
+  xp: 60,
+  streak: 3,
+  hearts: 5,
+  gems: 120,
+  dailyGoal: 20,
+  currentLesson: null,
+  currentQ: 0,
+  lessonQuestions: [],
+  lessonWrong: 0,
+  lessonCorrect: 0,
+  answered: false,
+  startTime: null,
+  selected: null,
+  matchState: {},
+};
+
+// ===== QUESTION BANKS =====
+const lessons = {
+  'criminal-basics': {
+    title: 'Elements of Crime',
+    xp: 10,
+    questions: [
+      {
+        type: 'mcq',
+        instruction: 'Choose the correct answer',
+        question: 'What are the two main elements required to establish a crime?',
+        answers: ['Actus reus and mens rea', 'Intent and motive', 'Evidence and testimony', 'Statute and precedent'],
+        correct: 0,
+      },
+      {
+        type: 'mcq',
+        instruction: 'True or False',
+        question: '"Actus reus" means the guilty mind of a defendant.',
+        answers: ['True', 'False'],
+        correct: 1,
+        explanation: 'Actus reus means the guilty ACT. Mens rea means the guilty mind.',
+      },
+      {
+        type: 'fill',
+        instruction: 'Complete the sentence',
+        question: 'A defendant must commit a _____ act (actus reus) to be found guilty of most crimes.',
+        answer: 'voluntary',
+        hint: 'Think about whether the act was forced or chosen',
+      },
+      {
+        type: 'mcq',
+        instruction: 'Select the best answer',
+        question: 'Which of the following is NOT a required element of a crime in most jurisdictions?',
+        answers: ['A guilty act (actus reus)', 'A guilty mind (mens rea)', 'A motive for committing the act', 'Concurrence of act and intent'],
+        correct: 2,
+        explanation: 'Motive is NOT a required element, though it may be relevant evidence.',
+      },
+      {
+        type: 'mcq',
+        instruction: 'Apply the law',
+        context: 'John, while sleepwalking, breaks a neighbor\'s window. He had no awareness of his actions.',
+        question: 'Can John be held criminally liable for the damage?',
+        answers: [
+          'Yes, because the window is broken',
+          'No, because he lacked voluntary actus reus',
+          'Yes, if the neighbor presses charges',
+          'No, because sleepwalking is a mental illness'
+        ],
+        correct: 1,
+        explanation: 'Criminal liability requires a voluntary act. Sleepwalking is involuntary.',
+      },
+    ]
+  },
+  'mens-rea': {
+    title: 'Mens Rea',
+    xp: 15,
+    questions: [
+      {
+        type: 'mcq',
+        instruction: 'Choose the correct answer',
+        question: 'What does "mens rea" literally translate to?',
+        answers: ['Guilty act', 'Guilty mind', 'Guilty party', 'Criminal behavior'],
+        correct: 1,
+      },
+      {
+        type: 'mcq',
+        instruction: 'Identify the level of mens rea',
+        question: 'A person fires a gun into a crowd. What level of mens rea is MOST likely present?',
+        answers: ['Negligence', 'Recklessness', 'Knowledge', 'Strict liability'],
+        correct: 1,
+        explanation: 'Recklessness involves conscious disregard of a substantial risk — firing into a crowd qualifies.',
+      },
+      {
+        type: 'fill',
+        instruction: 'Fill in the blank',
+        question: 'Under the Model Penal Code, the highest level of culpability is acting _____.',
+        answer: 'purposely',
+        hint: 'It means the person consciously desired the result',
+      },
+      {
+        type: 'match',
+        instruction: 'Match each term to its definition',
+        pairs: [
+          { term: 'Purpose', def: 'Conscious desire to cause result' },
+          { term: 'Knowledge', def: 'Aware result is practically certain' },
+          { term: 'Recklessness', def: 'Conscious disregard of risk' },
+          { term: 'Negligence', def: 'Should have been aware of risk' },
+        ]
+      },
+      {
+        type: 'mcq',
+        instruction: 'Apply the law',
+        context: 'Sarah, a surgeon, performs an operation she knows she is not qualified for. The patient suffers harm.',
+        question: 'What mens rea level best describes Sarah\'s culpability?',
+        answers: ['Purposely', 'Knowingly', 'Recklessly', 'Negligently'],
+        correct: 1,
+        explanation: 'Sarah knew she lacked qualification — she was knowingly creating a substantial risk.',
+      },
+    ]
+  }
+};
+
+// ===== LEADERBOARD DATA =====
+const lbData = [
+  { name: 'CaseLawCracker', flag: '🦅', xp: 420, you: false },
+  { name: 'TortQueen', flag: '⚖️', xp: 380, you: false },
+  { name: 'ConstitutionKing', flag: '📜', xp: 310, you: false },
+  { name: 'LawStudent42', flag: '⭐', xp: 60, you: true },
+  { name: 'MensReaMaster', flag: '🧠', xp: 255, you: false },
+  { name: 'BriefWriter99', flag: '📋', xp: 200, you: false },
+  { name: 'StrictLiability', flag: '🔒', xp: 175, you: false },
+  { name: 'HabeasCorpus22', flag: '🏛️', xp: 140, you: false },
+  { name: 'TortsAreLife', flag: '🩹', xp: 95, you: false },
+  { name: 'LawNewbie', flag: '📗', xp: 40, you: false },
+];
+
+function buildLeaderboard() {
+  const sorted = [...lbData].sort((a,b) => b.xp - a.xp);
+  const wrap = document.getElementById('lb-list');
+  wrap.innerHTML = sorted.map((p, i) => {
+    const rank = i + 1;
+    let rankHtml = `<span class="lb-rank">${rank}</span>`;
+    if (rank === 1) rankHtml = `<span class="lb-rank gold">🥇</span>`;
+    if (rank === 2) rankHtml = `<span class="lb-rank silver">🥈</span>`;
+    if (rank === 3) rankHtml = `<span class="lb-rank bronze">🥉</span>`;
+    return `<div class="lb-row ${p.you ? 'you' : ''}">
+      ${rankHtml}
+      <div class="lb-avatar">${p.flag}</div>
+      <div class="lb-name">${p.name}${p.you ? '<small>← You</small>' : ''}</div>
+      <div class="lb-xp">${p.xp}<small> XP</small></div>
+    </div>`;
+  }).join('');
+}
+
+// ===== ONBOARDING =====
+let obSelections = {};
+function startOnboarding() { showScreen('screen-onboard'); updateObProgress(); }
+function skipToApp() { showScreen('screen-app'); buildLeaderboard(); }
+
+function selectOb(btn, key, val) {
+  obSelections[key] = val;
+  btn.closest('.ob-options, .ob-step').querySelectorAll('.ob-option').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+function selectGoal(btn, xp) {
+  state.dailyGoal = xp;
+  document.querySelectorAll('.goal-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+
+function updateObProgress() {
+  const pct = ((state.obStep - 1) / 4) * 100;
+  document.getElementById('ob-progress').style.width = pct + '%';
+}
+function onboardNext() {
+  if (state.obStep < 4) {
+    document.getElementById('ob-step-' + state.obStep).classList.remove('active');
+    state.obStep++;
+    document.getElementById('ob-step-' + state.obStep).classList.add('active');
+    updateObProgress();
+    if (state.obStep === 4) document.getElementById('ob-continue-btn').textContent = 'START LEARNING';
+  } else {
+    showScreen('screen-app');
+    buildLeaderboard();
+  }
+}
+function onboardBack() {
+  if (state.obStep === 1) { showScreen('screen-splash'); return; }
+  document.getElementById('ob-step-' + state.obStep).classList.remove('active');
+  state.obStep--;
+  document.getElementById('ob-step-' + state.obStep).classList.add('active');
+  document.getElementById('ob-continue-btn').textContent = 'CONTINUE';
+  updateObProgress();
+}
+
+// ===== LESSON =====
+function startLesson(id) {
+  const lesson = lessons[id];
+  if (!lesson) return;
+  state.currentLesson = id;
+  state.currentQ = 0;
+  state.lessonWrong = 0;
+  state.lessonCorrect = 0;
+  state.hearts = 5;
+  state.startTime = Date.now();
+  state.lessonQuestions = [...lesson.questions];
+  showScreen('screen-lesson');
+  renderHearts();
+  loadQuestion();
+}
+
+function renderHearts() {
+  const d = document.getElementById('hearts-display');
+  d.innerHTML = '';
+  for (let i = 0; i < 5; i++) {
+    const h = document.createElement('span');
+    h.className = 'heart' + (i >= state.hearts ? ' lost' : '');
+    h.textContent = '❤️';
+    d.appendChild(h);
+  }
+}
+
+function loadQuestion() {
+  const q = state.lessonQuestions[state.currentQ];
+  if (!q) { completelesson(); return; }
+  state.answered = false;
+  state.selected = null;
+  state.matchState = {};
+
+  // progress
+  const pct = (state.currentQ / state.lessonQuestions.length) * 100;
+  document.getElementById('lesson-progress').style.width = pct + '%';
+
+  const body = document.getElementById('lesson-body');
+  const footer = document.getElementById('lesson-footer');
+
+  let html = `<div class="q-type-badge">${typeLabel(q.type)}</div>
+    <div class="q-instruction">${q.instruction}</div>`;
+
+  if (q.context) html += `<div class="q-context">${q.context}</div>`;
+
+  if (q.type === 'mcq') {
+    html += `<div class="q-instruction" style="font-size:18px;font-weight:700;text-align:center;max-width:500px">${q.question}</div>`;
+    const two = q.answers.length === 2;
+    html += `<div class="answers-grid ${two ? 'two-col' : ''}" id="answers">`;
+    q.answers.forEach((a, i) => {
+      html += `<button class="answer-btn" onclick="selectAnswer(${i})" id="ans-${i}">
+        <span class="answer-letter">${String.fromCharCode(65+i)}</span>${a}</button>`;
+    });
+    html += `</div>`;
+  } else if (q.type === 'fill') {
+    html += `<div class="q-instruction" style="font-size:17px;font-weight:700;text-align:center;max-width:500px;line-height:1.5">${q.question}</div>`;
+    html += `<input class="fill-input" id="fill-input" placeholder="Type your answer..." oninput="onFillInput(this)" onkeydown="if(event.key==='Enter')checkAnswer()">`;
+    if (q.hint) html += `<div style="font-size:13px;color:var(--gray-500);font-style:italic">💡 Hint: ${q.hint}</div>`;
+  } else if (q.type === 'match') {
+    html += `<div class="q-instruction" style="font-size:16px;font-weight:700">Tap a term, then tap its definition.</div>`;
+    html += `<div class="match-grid" id="match-grid">`;
+    const terms = q.pairs.map(p => p.term);
+    const defs = q.pairs.map(p => p.def);
+    // interleave terms and defs
+    terms.forEach((t, i) => {
+      html += `<button class="match-btn" id="mt-${i}" onclick="selectMatch('term',${i},'${t.replace(/'/g,"\\'")}')"><b>${t}</b></button>`;
+    });
+    defs.forEach((d, i) => {
+      html += `<button class="match-btn" id="md-${i}" onclick="selectMatch('def',${i},'${d.replace(/'/g,"\\'")}')"><small>${d}</small></button>`;
+    });
+    html += `</div>`;
+    state.matchState = { pairs: q.pairs, matched: 0, selectedTerm: null, selectedDef: null };
+  }
+
+  body.innerHTML = html;
+  footer.innerHTML = `<button class="check-btn" id="check-btn" onclick="checkAnswer()">CHECK</button>`;
+  updateCheckBtn();
+}
+
+function typeLabel(t) {
+  if (t === 'mcq') return '📝 Multiple Choice';
+  if (t === 'fill') return '✏️ Fill in the Blank';
+  if (t === 'match') return '🔗 Match the Pairs';
+  return '❓ Question';
+}
+
+function selectAnswer(i) {
+  if (state.answered) return;
+  state.selected = i;
+  document.querySelectorAll('.answer-btn').forEach((b, idx) => {
+    b.classList.toggle('selected', idx === i);
+  });
+  updateCheckBtn();
+}
+
+function onFillInput(el) {
+  state.selected = el.value.trim();
+  updateCheckBtn();
+}
+
+function updateCheckBtn() {
+  const btn = document.getElementById('check-btn');
+  if (!btn) return;
+  const q = state.lessonQuestions[state.currentQ];
+  let ready = false;
+  if (q.type === 'mcq') ready = state.selected !== null;
+  else if (q.type === 'fill') ready = state.selected && state.selected.length > 0;
+  else if (q.type === 'match') ready = state.matchState.matched === (state.matchState.pairs || []).length;
+  btn.className = 'check-btn' + (ready ? ' ready' : '');
+}
+
+function selectMatch(type, idx, val) {
+  if (state.answered) return;
+  const ms = state.matchState;
+  const btnId = type === 'term' ? `mt-${idx}` : `md-${idx}`;
+  const btn = document.getElementById(btnId);
+  if (btn.classList.contains('matched')) return;
+
+  if (type === 'term') {
+    if (ms.selectedTerm !== null) document.getElementById(`mt-${ms.selectedTerm}`)?.classList.remove('selected-match');
+    ms.selectedTerm = idx;
+    ms.selectedTermVal = val;
+    btn.classList.add('selected-match');
+  } else {
+    if (ms.selectedDef !== null) document.getElementById(`md-${ms.selectedDef}`)?.classList.remove('selected-match');
+    ms.selectedDef = idx;
+    ms.selectedDefVal = val;
+    btn.classList.add('selected-match');
+  }
+
+  if (ms.selectedTerm !== null && ms.selectedDef !== null) {
+    const pair = ms.pairs.find(p => p.term === ms.selectedTermVal);
+    if (pair && pair.def === ms.selectedDefVal) {
+      document.getElementById(`mt-${ms.selectedTerm}`).classList.replace('selected-match','matched');
+      document.getElementById(`md-${ms.selectedDef}`).classList.replace('selected-match','matched');
+      ms.matched++;
+      ms.selectedTerm = null; ms.selectedDef = null;
+      ms.selectedTermVal = null; ms.selectedDefVal = null;
+    } else {
+      document.getElementById(`mt-${ms.selectedTerm}`).classList.add('wrong-match');
+      document.getElementById(`md-${ms.selectedDef}`).classList.add('wrong-match');
+      setTimeout(() => {
+        document.getElementById(`mt-${ms.selectedTerm}`)?.classList.remove('wrong-match','selected-match');
+        document.getElementById(`md-${ms.selectedDef}`)?.classList.remove('wrong-match','selected-match');
+        ms.selectedTerm = null; ms.selectedDef = null;
+      }, 400);
+    }
+    updateCheckBtn();
+  }
+}
+
+function checkAnswer() {
+  if (state.answered) return;
+  const q = state.lessonQuestions[state.currentQ];
+  if (!q) return;
+
+  // Check if ready
+  const btn = document.getElementById('check-btn');
+  if (!btn.classList.contains('ready')) return;
+
+  state.answered = true;
+  let correct = false;
+  let explanation = q.explanation || '';
+
+  if (q.type === 'mcq') {
+    correct = state.selected === q.correct;
+    document.querySelectorAll('.answer-btn').forEach((b, i) => {
+      b.disabled = true;
+      if (i === q.correct) b.classList.add('correct');
+      else if (i === state.selected && !correct) b.classList.add('wrong');
+    });
+  } else if (q.type === 'fill') {
+    const inp = document.getElementById('fill-input');
+    const userAns = (inp.value || '').trim().toLowerCase();
+    const rightAns = q.answer.toLowerCase();
+    correct = userAns === rightAns || userAns.includes(rightAns) || rightAns.includes(userAns);
+    inp.disabled = true;
+    inp.classList.add(correct ? 'correct' : 'wrong');
+    explanation = correct ? '' : `Correct answer: <b>${q.answer}</b>`;
+  } else if (q.type === 'match') {
+    correct = true; // match is self-validating
+  }
+
+  if (correct) {
+    state.lessonCorrect++;
+    showResultPanel(true, explanation);
+  } else {
+    state.lessonWrong++;
+    state.hearts = Math.max(0, state.hearts - 1);
+    renderHearts();
+    showResultPanel(false, explanation);
+    if (state.hearts === 0) {
+      setTimeout(() => { showToast('💔 Out of hearts! Lesson failed.'); setTimeout(() => exitLesson(), 1500); }, 1200);
+    }
+  }
+}
+
+function showResultPanel(isCorrect, explanation) {
+  const footer = document.getElementById('lesson-footer');
+  if (isCorrect) {
+    footer.innerHTML = `<div class="result-panel correct-panel">
+      <div class="result-header correct-txt">✅ Correct!</div>
+      ${explanation ? `<div class="result-answer">${explanation}</div>` : ''}
+      <button class="result-continue green" onclick="nextQuestion()">CONTINUE</button>
+    </div>`;
+  } else {
+    footer.innerHTML = `<div class="result-panel wrong-panel">
+      <div class="result-header wrong-txt">❌ Incorrect</div>
+      ${explanation ? `<div class="result-answer">${explanation}</div>` : ''}
+      <button class="result-continue red" onclick="nextQuestion()">GOT IT</button>
+    </div>`;
+  }
+}
+
+function nextQuestion() {
+  state.currentQ++;
+  if (state.currentQ >= state.lessonQuestions.length) {
+    completelesson();
+  } else {
+    loadQuestion();
+  }
+}
+
+function completelesson() {
+  const lesson = lessons[state.currentLesson];
+  const xpEarned = lesson.xp;
+  const total = state.lessonCorrect + state.lessonWrong;
+  const acc = total > 0 ? Math.round((state.lessonCorrect / total) * 100) : 100;
+  const elapsed = Math.round((Date.now() - state.startTime) / 1000);
+  const mins = Math.floor(elapsed / 60);
+  const secs = elapsed % 60;
+
+  state.xp += xpEarned;
+  state.gems += 5;
+  updateStats();
+
+  document.getElementById('comp-xp').textContent = `+${xpEarned} XP`;
+  document.getElementById('comp-acc').textContent = acc + '%';
+  document.getElementById('comp-streak').textContent = state.streak;
+  document.getElementById('comp-time').textContent = `${mins}:${secs.toString().padStart(2,'0')}`;
+
+  showScreen('screen-complete');
+}
+
+function exitLesson() {
+  showScreen('screen-app');
+  updateStats();
+}
+
+function continueFromComplete() {
+  showScreen('screen-app');
+  updateStats();
+  showToast('🎉 +' + (lessons[state.currentLesson]?.xp || 10) + ' XP earned!');
+}
+
+// ===== TABS =====
+function showTab(tab) {
+  document.querySelectorAll('.tab-view').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.mn-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  document.getElementById('nav-' + tab)?.classList.add('active');
+  document.getElementById('mn-' + tab)?.classList.add('active');
+  if (tab === 'courses') buildCoursesTab();
+}
+
+// ===== UTILS =====
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function updateStats() {
+  document.getElementById('xp-val').textContent = state.xp;
+  document.getElementById('streak-val').textContent = state.streak;
+  document.getElementById('hearts-val').textContent = state.hearts;
+  document.getElementById('gems-val').textContent = state.gems;
+  document.getElementById('rp-streak').textContent = state.streak;
+  document.getElementById('rp-xp').textContent = state.xp;
+  document.getElementById('prof-streak').textContent = state.streak;
+  document.getElementById('prof-xp').textContent = state.xp;
+  const pct = Math.min(100, (state.xp / state.dailyGoal) * 100);
+  document.getElementById('rp-xp-bar').style.width = pct + '%';
+  // update leaderboard entry
+  const me = lbData.find(p => p.you);
+  if (me) me.xp = state.xp;
+  buildLeaderboard();
+}
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// Init
+buildLeaderboard();
+
+// ===== COURSES DATA & LOGIC =====
+const allCourses = [
+  { id: 'criminal', name: 'Criminal Law', icon: '🔍', color: '#1CB0F6', bg: 'rgba(28,176,246,0.12)', units: 5, desc: 'Crime, intent, defenses & sentencing', enrolled: true, progress: 35 },
+  { id: 'contract', name: 'Contract Law', icon: '📝', color: '#58CC02', bg: 'rgba(88,204,2,0.12)', units: 6, desc: 'Agreements, breach & remedies', enrolled: true, progress: 0 },
+  { id: 'constitutional', name: 'Constitutional Law', icon: '🏛️', color: '#FF9600', bg: 'rgba(255,150,0,0.12)', units: 7, desc: 'Rights, powers & judicial review', enrolled: false, progress: 0 },
+  { id: 'tort', name: 'Tort Law', icon: '⚖️', color: '#FF4B4B', bg: 'rgba(255,75,75,0.12)', units: 5, desc: 'Negligence, liability & damages', enrolled: false, progress: 0 },
+  { id: 'property', name: 'Property Law', icon: '🏠', color: '#CE82FF', bg: 'rgba(206,130,255,0.12)', units: 6, desc: 'Ownership, rights & transfers', enrolled: false, progress: 0 },
+  { id: 'admin', name: 'Administrative Law', icon: '🏢', color: '#FFC800', bg: 'rgba(255,200,0,0.12)', units: 4, desc: 'Government agencies & regulation', enrolled: false, progress: 0 },
+  { id: 'international', name: 'International Law', icon: '🌍', color: '#46A302', bg: 'rgba(70,163,2,0.12)', units: 5, desc: 'Treaties, sovereignty & global norms', enrolled: false, progress: 0 },
+  { id: 'corporate', name: 'Corporate Law', icon: '💼', color: '#0A91D1', bg: 'rgba(10,145,209,0.12)', units: 6, desc: 'Business entities, governance & deals', enrolled: false, progress: 0 },
+];
+
+let activeCourseId = 'criminal';
+
+function buildCoursesTab() {
+  const enrolled = allCourses.filter(c => c.enrolled);
+  const available = allCourses.filter(c => !c.enrolled);
+
+  document.getElementById('enrolled-list').innerHTML = enrolled.map(c => `
+    <div class="course-card ${c.id === activeCourseId ? 'active-course' : ''}">
+      <div class="course-icon-wrap" style="background:${c.bg}">${c.icon}</div>
+      <div class="course-info">
+        <div class="c-name">${c.name}</div>
+        <div class="c-sub">${c.units} units · ${c.desc}</div>
+        <div class="course-progress-bar">
+          <div class="course-progress-fill" style="width:${c.progress}%;background:${c.color}"></div>
+        </div>
+      </div>
+      <div class="course-action">
+        ${c.id === activeCourseId
+          ? '<button class="btn-switch current">CURRENT</button>'
+          : `<button class="btn-switch" onclick="switchCourse('${c.id}')">SWITCH</button>`}
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('available-list').innerHTML = available.map(c => `
+    <div class="course-card">
+      <div class="course-icon-wrap" style="background:${c.bg}">${c.icon}</div>
+      <div class="course-info">
+        <div class="c-name">${c.name}</div>
+        <div class="c-sub">${c.units} units · ${c.desc}</div>
+      </div>
+      <div class="course-action">
+        <button class="btn-enroll" onclick="enrollCourse('${c.id}')">+ ENROLL</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function switchCourse(id) {
+  activeCourseId = id;
+  const course = allCourses.find(c => c.id === id);
+  showToast('📚 Switched to ' + course.name);
+  buildCoursesTab();
+  showTab('learn');
+}
+
+function enrollCourse(id) {
+  const course = allCourses.find(c => c.id === id);
+  course.enrolled = true;
+  showToast('🎉 Enrolled in ' + course.name + '!');
+  buildCoursesTab();
+}
+</script>
+</body>
+</html>

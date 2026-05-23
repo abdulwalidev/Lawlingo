@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Law Visual Guide — UOL Exam</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f8f7f4; color: #1a1a18; line-height: 1.5; }
+.page { padding: 24px 16px; max-width: 700px; margin: 0 auto; }
+.section { margin-bottom: 44px; }
+.sec-title { font-size: 18px; font-weight: 600; color: #1a1a18; border-left: 4px solid; padding-left: 12px; margin-bottom: 18px; }
+.scene { background: #f0efe9; border-radius: 12px; border: 0.5px solid #d3d1c7; padding: 16px; margin-bottom: 14px; }
+.scene-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em; color: #888780; margin-bottom: 10px; }
+.must-badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px; background: #fcebeb; color: #a32d2d; margin: 2px; font-weight: 600; border: 0.5px solid #f09595; }
+.case-badge { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 4px; background: #e6f1fb; color: #185fa5; margin: 2px; border: 0.5px solid #85b7eb; }
+.rule-box { border-left: 3px solid; padding: 10px 14px; margin: 10px 0; border-radius: 0 8px 8px 0; font-size: 13px; background: #f0efe9; }
+.key-case { background: #fff; border: 0.5px solid #d3d1c7; border-radius: 8px; padding: 10px 14px; margin: 8px 0; }
+.kc-name { font-size: 13px; font-weight: 600; color: #1a1a18; }
+.kc-year { font-size: 11px; color: #888780; }
+.kc-rule { font-size: 12px; color: #5f5e5a; margin-top: 4px; }
+.kc-exam { font-size: 11px; color: #a32d2d; margin-top: 4px; font-weight: 500; }
+.vs-row { display: flex; gap: 10px; margin: 10px 0; }
+.vs-col { flex: 1; background: #fff; border: 0.5px solid #d3d1c7; border-radius: 8px; padding: 10px; }
+.vs-head { font-size: 12px; font-weight: 600; margin-bottom: 8px; }
+.vs-item { font-size: 11px; color: #5f5e5a; margin: 4px 0; padding-left: 12px; position: relative; }
+.vs-item::before { content: '▸'; position: absolute; left: 0; color: #888780; }
+.timeline-item { display: flex; gap: 12px; margin-bottom: 16px; }
+.tl-dot { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.tl-content { flex: 1; }
+.tl-year { font-size: 11px; color: #888780; }
+.tl-title { font-size: 13px; font-weight: 600; color: #1a1a18; }
+.tl-desc { font-size: 12px; color: #5f5e5a; margin-top: 3px; }
+.flow-box { font-size: 12px; padding: 8px 12px; border-radius: 6px; border: 0.5px solid #d3d1c7; background: #fff; color: #1a1a18; margin: 5px 0; }
+.divider { height: 1px; background: #d3d1c7; margin: 28px 0; }
+/* SVG boxes use inline fill so no dark mode issue */
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- TOPIC MAP -->
+<div class="section">
+<div class="sec-title" style="border-color:#7F77DD">📚 Topic map — what this is all about</div>
+<div class="scene">
+<div class="scene-label">The big picture</div>
+<svg width="100%" viewBox="0 0 640 90">
+<defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#7F77DD" stroke-width="1.5" stroke-linecap="round"/></marker>
+<marker id="arr2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#0F6E56" stroke-width="1.5" stroke-linecap="round"/></marker></defs>
+<rect x="10" y="20" width="185" height="50" rx="8" fill="#EEEDFE" stroke="#7F77DD" stroke-width="1"/>
+<text x="102" y="41" text-anchor="middle" font-size="13" font-weight="600" fill="#3C3489">Procedural exclusivity</text>
+<text x="102" y="58" text-anchor="middle" font-size="11" fill="#534AB7">Public vs private law</text>
+<line x1="195" y1="45" x2="228" y2="45" stroke="#7F77DD" stroke-width="1.5" marker-end="url(#arr)"/>
+<rect x="230" y="20" width="180" height="50" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="320" y="41" text-anchor="middle" font-size="13" font-weight="600" fill="#085041">Ouster clauses</text>
+<text x="320" y="58" text-anchor="middle" font-size="11" fill="#0F6E56">Parliament vs courts</text>
+<line x1="410" y1="45" x2="443" y2="45" stroke="#0F6E56" stroke-width="1.5" marker-end="url(#arr2)"/>
+<rect x="445" y="20" width="185" height="50" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="1"/>
+<text x="537" y="41" text-anchor="middle" font-size="13" font-weight="600" fill="#4A1B0C">Availability of JR</text>
+<text x="537" y="58" text-anchor="middle" font-size="11" fill="#993C1D">Jurisdiction &amp; amenability</text>
+</svg>
+</div>
+</div>
+
+<!-- SECTION 1 -->
+<div class="section">
+<div class="sec-title" style="border-color:#7F77DD">⚖️ 1. Procedural exclusivity — O'Reilly v Mackman [1983]</div>
+
+<div class="scene">
+<div class="scene-label">The courtroom drama (stick figure edition)</div>
+<svg width="100%" viewBox="0 0 640 210">
+<defs><marker id="ra" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#E24B4A" stroke-width="1.5" stroke-linecap="round"/></marker></defs>
+<!-- Prison -->
+<rect x="20" y="60" width="80" height="100" rx="4" fill="none" stroke="#b4b2a9" stroke-width="1.2"/>
+<rect x="35" y="75" width="15" height="20" rx="2" fill="none" stroke="#b4b2a9" stroke-width="1"/>
+<rect x="65" y="75" width="15" height="20" rx="2" fill="none" stroke="#b4b2a9" stroke-width="1"/>
+<rect x="48" y="122" width="20" height="38" rx="2" fill="none" stroke="#b4b2a9" stroke-width="1"/>
+<text x="60" y="175" text-anchor="middle" font-size="11" fill="#888780">Hull Prison</text>
+<!-- Prisoner -->
+<circle cx="155" cy="82" r="13" fill="none" stroke="#7F77DD" stroke-width="1.8"/>
+<line x1="155" y1="95" x2="155" y2="132" stroke="#7F77DD" stroke-width="1.8"/>
+<line x1="155" y1="105" x2="133" y2="118" stroke="#7F77DD" stroke-width="1.8"/>
+<line x1="155" y1="105" x2="178" y2="112" stroke="#7F77DD" stroke-width="1.8"/>
+<line x1="155" y1="132" x2="140" y2="158" stroke="#7F77DD" stroke-width="1.8"/>
+<line x1="155" y1="132" x2="170" y2="158" stroke="#7F77DD" stroke-width="1.8"/>
+<text x="155" y="172" text-anchor="middle" font-size="11" fill="#7F77DD">Prisoner</text>
+<!-- Speech bubble prisoner -->
+<rect x="172" y="55" width="148" height="40" rx="8" fill="#fff" stroke="#b4b2a9" stroke-width="0.8"/>
+<text x="246" y="72" text-anchor="middle" font-size="11" fill="#1a1a18">"I'll sue via ordinary</text>
+<text x="246" y="87" text-anchor="middle" font-size="11" fill="#1a1a18">writ — no time limit!"</text>
+<!-- Arrow -->
+<line x1="318" y1="100" x2="375" y2="100" stroke="#E24B4A" stroke-width="2" marker-end="url(#ra)"/>
+<!-- Judge -->
+<circle cx="425" cy="82" r="13" fill="none" stroke="#185fa5" stroke-width="1.8"/>
+<rect x="413" y="58" width="24" height="12" rx="3" fill="#e6f1fb" stroke="#185fa5" stroke-width="1"/>
+<line x1="425" y1="95" x2="425" y2="132" stroke="#185fa5" stroke-width="1.8"/>
+<line x1="425" y1="105" x2="403" y2="118" stroke="#185fa5" stroke-width="1.8"/>
+<line x1="425" y1="105" x2="448" y2="112" stroke="#185fa5" stroke-width="1.8"/>
+<line x1="425" y1="132" x2="410" y2="158" stroke="#185fa5" stroke-width="1.8"/>
+<line x1="425" y1="132" x2="440" y2="158" stroke="#185fa5" stroke-width="1.8"/>
+<text x="425" y="172" text-anchor="middle" font-size="11" fill="#185fa5">Judge (HL)</text>
+<!-- Judge speech -->
+<rect x="443" y="48" width="190" height="55" rx="8" fill="#fff" stroke="#185fa5" stroke-width="0.8"/>
+<text x="538" y="66" text-anchor="middle" font-size="11" fill="#1a1a18">"ABUSE OF PROCESS!</text>
+<text x="538" y="81" text-anchor="middle" font-size="11" fill="#1a1a18">Use Ord 53 (AJR).</text>
+<text x="538" y="96" text-anchor="middle" font-size="11" fill="#1a1a18">Public law = JR only."</text>
+<text x="320" y="198" text-anchor="middle" font-size="10" fill="#888780">Hull prison riots → prisoners lost remission → tried ordinary writ → BLOCKED by HL</text>
+</svg>
+</div>
+
+<div class="rule-box" style="border-color:#7F77DD">
+<strong>THE RULE (O'Reilly):</strong> If you have a PUBLIC LAW claim → you MUST use AJR (Ord 53 / CPR Pt 54). Using ordinary action = abuse of process.
+</div>
+
+<div class="scene">
+<div class="scene-label">Ordinary action vs AJR — why it matters</div>
+<div class="vs-row">
+<div class="vs-col" style="border-left:3px solid #E24B4A">
+<div class="vs-head" style="color:#a32d2d">⚠ Ordinary Action (BAD for public law)</div>
+<div class="vs-item">Bypasses 3-month time limit</div>
+<div class="vs-item">Avoids safeguards for public bodies</div>
+<div class="vs-item">Keeps bodies in uncertainty longer</div>
+<div class="vs-item">= ABUSE OF PROCESS per O'Reilly</div>
+</div>
+<div class="vs-col" style="border-left:3px solid #3B6D11">
+<div class="vs-head" style="color:#3B6D11">✓ AJR / Judicial Review (correct)</div>
+<div class="vs-item">3-month time limit (certainty)</div>
+<div class="vs-item">Requires permission stage</div>
+<div class="vs-item">Protects public administration</div>
+<div class="vs-item">Cross-exam limited but available</div>
+</div>
+</div>
+</div>
+
+<div class="scene">
+<div class="scene-label">3 exceptions — when ordinary action IS allowed</div>
+<svg width="100%" viewBox="0 0 640 130">
+<rect x="10" y="20" width="192" height="90" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="106" y="48" text-anchor="middle" font-size="13" font-weight="600" fill="#085041">(a) Collateral issue</text>
+<text x="106" y="66" text-anchor="middle" font-size="11" fill="#0F6E56">Private law right</text>
+<text x="106" y="81" text-anchor="middle" font-size="11" fill="#0F6E56">infringed incidentally</text>
+<text x="106" y="97" text-anchor="middle" font-size="11" fill="#0F6E56">e.g. Wandsworth v Winder</text>
+<rect x="224" y="20" width="192" height="90" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="1"/>
+<text x="320" y="48" text-anchor="middle" font-size="13" font-weight="600" fill="#4A1B0C">(b) Consent</text>
+<text x="320" y="66" text-anchor="middle" font-size="11" fill="#993C1D">Both parties agree</text>
+<text x="320" y="81" text-anchor="middle" font-size="11" fill="#993C1D">to use ordinary</text>
+<text x="320" y="97" text-anchor="middle" font-size="11" fill="#993C1D">action procedure</text>
+<rect x="438" y="20" width="192" height="90" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="1"/>
+<text x="534" y="48" text-anchor="middle" font-size="13" font-weight="600" fill="#412402">(c) Other exceptions</text>
+<text x="534" y="66" text-anchor="middle" font-size="11" fill="#854F0B">Case by case basis</text>
+<text x="534" y="81" text-anchor="middle" font-size="11" fill="#854F0B">Mercury Comms;</text>
+<text x="534" y="97" text-anchor="middle" font-size="11" fill="#854F0B">Roy v Kensington</text>
+</svg>
+</div>
+
+<div class="scene">
+<div class="scene-label">🔑 Must-know cases — public/private divide</div>
+<div class="key-case" style="border-left:3px solid #E24B4A">
+<div style="display:flex;justify-content:space-between;align-items:start">
+<div><div class="kc-name">Datafin [1987] — Takeover Panel</div></div>
+<span class="must-badge">MUST KNOW</span>
+</div>
+<div class="kc-rule">Panel = private but woven into governmental regulatory framework → amenable to JR. Test: <em>nature of function</em>, not just source of power.</div>
+<div class="kc-exam">Exam: Use to argue a body IS susceptible to JR despite private/contractual origins.</div>
+</div>
+<div class="key-case" style="border-left:3px solid #185fa5">
+<div><div class="kc-name">Aga Khan [1993] — Jockey Club</div></div>
+<div class="kc-rule">NOT amenable to JR — not woven into system of GOVERNMENTAL control. Tightened Datafin: must show "governmental" not just "public" function.</div>
+<div class="kc-exam">Exam: Contrast with Datafin. Shows the limits of amenability.</div>
+</div>
+<div class="key-case" style="border-left:3px solid #185fa5">
+<div><div class="kc-name">Wandsworth v Winder [1984]</div></div>
+<div class="kc-rule">Tenant defending possession action could raise ultra vires rent increase as defence. Defence = matter of right; no abuse of process. Private contractual right dominated.</div>
+</div>
+<div class="key-case" style="border-left:3px solid #185fa5">
+<div><div class="kc-name">Roy v Kensington FPC [1992]</div></div>
+<div class="kc-rule">GP had bundle of private law rights → ordinary action allowed even though public law elements present. Private rights "dominating" proceedings.</div>
+</div>
+<div class="key-case" style="border-left:3px solid #888780">
+<div><div class="kc-name">Cocks v Thanet [1983]</div></div>
+<div class="kc-rule">Housing Act: public law duty (inquiry) was condition precedent to private right → must use Ord 53. Contrast with Winder: here private right didn't yet EXIST.</div>
+</div>
+<div class="key-case" style="border-left:3px solid #888780">
+<div><div class="kc-name">Mercury Communications [1996]</div></div>
+<div class="kc-rule">Substance was a contractual dispute → flexibility retained. Not abuse to use ordinary action where Ord 53 not peculiarly suited.</div>
+</div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 2: OUSTER CLAUSES -->
+<div class="section">
+<div class="sec-title" style="border-color:#185fa5">🚪 2. Ouster clauses — Parliament trying to slam the door on courts</div>
+
+<div class="scene">
+<div class="scene-label">What is an ouster clause? (stick figure scene)</div>
+<svg width="100%" viewBox="0 0 640 215">
+<defs><marker id="ga" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#3B6D11" stroke-width="1.5" stroke-linecap="round"/></marker>
+<marker id="ba" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#185fa5" stroke-width="1.5" stroke-linecap="round"/></marker></defs>
+<!-- Parliament -->
+<rect x="12" y="65" width="88" height="95" rx="4" fill="none" stroke="#b4b2a9" stroke-width="1.2"/>
+<polygon points="56,34 12,65 100,65" fill="none" stroke="#b4b2a9" stroke-width="1.2"/>
+<text x="56" y="172" text-anchor="middle" font-size="11" fill="#888780">Parliament</text>
+<!-- Parliament stick figure -->
+<circle cx="56" cy="98" r="11" fill="none" stroke="#3B6D11" stroke-width="1.8"/>
+<line x1="56" y1="109" x2="56" y2="138" stroke="#3B6D11" stroke-width="1.8"/>
+<line x1="56" y1="118" x2="38" y2="130" stroke="#3B6D11" stroke-width="1.8"/>
+<line x1="56" y1="118" x2="74" y2="124" stroke="#3B6D11" stroke-width="1.8"/>
+<line x1="56" y1="138" x2="44" y2="162" stroke="#3B6D11" stroke-width="1.8"/>
+<line x1="56" y1="138" x2="68" y2="162" stroke="#3B6D11" stroke-width="1.8"/>
+<!-- Statute scroll -->
+<rect x="78" y="108" width="58" height="32" rx="3" fill="#fff" stroke="#b4b2a9" stroke-width="0.8"/>
+<text x="107" y="122" text-anchor="middle" font-size="9" fill="#5f5e5a">"shall NOT</text>
+<text x="107" y="133" text-anchor="middle" font-size="9" fill="#5f5e5a">be questioned"</text>
+<!-- Big door/barrier -->
+<rect x="250" y="40" width="20" height="145" rx="4" fill="#B4B2A9" stroke="#888780" stroke-width="1"/>
+<text x="260" y="200" text-anchor="middle" font-size="10" fill="#888780">Ouster</text>
+<!-- Arrow parliament → door -->
+<line x1="136" y1="124" x2="248" y2="124" stroke="#3B6D11" stroke-width="1.5" marker-end="url(#ga)"/>
+<text x="192" y="116" text-anchor="middle" font-size="10" fill="#3B6D11">passes statute</text>
+<!-- Court -->
+<rect x="458" y="65" width="88" height="95" rx="4" fill="none" stroke="#b4b2a9" stroke-width="1.2"/>
+<polygon points="502,34 458,65 546,65" fill="none" stroke="#b4b2a9" stroke-width="1.2"/>
+<text x="502" y="172" text-anchor="middle" font-size="11" fill="#888780">Supreme Court</text>
+<!-- Judge stick figure -->
+<circle cx="502" cy="98" r="11" fill="none" stroke="#185fa5" stroke-width="1.8"/>
+<rect x="492" y="78" width="20" height="10" rx="3" fill="#e6f1fb" stroke="#185fa5" stroke-width="1"/>
+<line x1="502" y1="109" x2="502" y2="138" stroke="#185fa5" stroke-width="1.8"/>
+<line x1="502" y1="118" x2="482" y2="130" stroke="#185fa5" stroke-width="1.8"/>
+<line x1="502" y1="118" x2="522" y2="124" stroke="#185fa5" stroke-width="1.8"/>
+<line x1="502" y1="138" x2="490" y2="162" stroke="#185fa5" stroke-width="1.8"/>
+<line x1="502" y1="138" x2="514" y2="162" stroke="#185fa5" stroke-width="1.8"/>
+<!-- Court speech -->
+<rect x="320" y="52" width="134" height="56" rx="8" fill="#fff" stroke="#185fa5" stroke-width="0.8"/>
+<text x="387" y="70" text-anchor="middle" font-size="11" fill="#1a1a18">"Error of law =</text>
+<text x="387" y="85" text-anchor="middle" font-size="11" fill="#1a1a18">nullity = NOT a</text>
+<text x="387" y="100" text-anchor="middle" font-size="11" fill="#1a1a18">'determination'!"</text>
+<!-- Bounce arrow back through door -->
+<path d="M454 110 Q390 140 272 124" fill="none" stroke="#185fa5" stroke-width="1.5" stroke-dasharray="5 3" marker-end="url(#ba)"/>
+</svg>
+</div>
+
+<div class="rule-box" style="border-color:#185fa5">
+<strong>OUSTER CLAUSE</strong> = statutory provision attempting to exclude/restrict courts from reviewing administrative decisions.<br>
+Core tension: <strong>Parliamentary sovereignty</strong> (obey Parliament) vs <strong>Rule of law</strong> (courts must keep JR).
+</div>
+
+<div class="scene">
+<div class="scene-label">Chronological evolution of ouster clause law</div>
+<div class="timeline-item">
+<div class="tl-dot" style="background:#FAEEDA;color:#854F0B">56</div>
+<div class="tl-content">
+<div class="tl-year">Smith v East Elloe RDC [1956]</div>
+<div class="tl-title">Courts DEFERRED — wrong approach</div>
+<div class="tl-desc">6-week limit upheld even against bad faith allegation. Courts reluctant. Now largely discredited.</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="tl-dot" style="background:#fcebeb;color:#a32d2d;font-size:13px">★</div>
+<div class="tl-content">
+<div class="tl-year">Anisminic v Foreign Compensation Commission [1969]</div>
+<div class="tl-title" style="color:#a32d2d">⭐ THE BIG ONE — ouster clauses broken</div>
+<div class="tl-desc">FCC made legal error → decision = NULLITY = not a "determination" → ouster clause didn't apply. Abolished distinction between errors going to jurisdiction and errors within jurisdiction.</div>
+<div style="margin-top:6px"><span class="must-badge">MUST KNOW</span></div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="tl-dot" style="background:#f0efe9;color:#5f5e5a">77</div>
+<div class="tl-content">
+<div class="tl-year">R v SSE ex p Ostler [1977]</div>
+<div class="tl-title">Partial ouster (time limits) upheld</div>
+<div class="tl-desc">6-week limit in planning cases = valid partial ouster. Courts accept time limits as legitimate.</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="tl-dot" style="background:#fcebeb;color:#a32d2d;font-size:13px">★</div>
+<div class="tl-content">
+<div class="tl-year">R (Privacy International) v IPT [2019] UKSC</div>
+<div class="tl-title" style="color:#a32d2d">⭐ Anisminic reaffirmed + extended</div>
+<div class="tl-desc">Lord Carnwath: JR can only be excluded by "most clear and explicit words." Parliament must explicitly confront exclusion. Vague formulas insufficient. Rule of law requires judicial oversight.</div>
+<div style="margin-top:6px"><span class="must-badge">MUST KNOW</span></div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="tl-dot" style="background:#f0efe9;color:#5f5e5a">23</div>
+<div class="tl-content">
+<div class="tl-year">R (Oceana) v Upper Tribunal [2023]</div>
+<div class="tl-title">s.11A TCFA 2007 — explicit partial ouster works</div>
+<div class="tl-desc">Saini J: where Parliament clearly addresses exclusion → courts must give effect. Exceptions: bad faith, no original jurisdiction, fundamental breach of natural justice.</div>
+</div>
+</div>
+</div>
+
+<div class="scene">
+<div class="scene-label">Anisminic — before vs after (jurisdiction diagram)</div>
+<svg width="100%" viewBox="0 0 640 165">
+<defs><marker id="bl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#185fa5" stroke-width="2" stroke-linecap="round"/></marker></defs>
+<text x="160" y="22" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a18">Before Anisminic</text>
+<text x="490" y="22" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a18">After Anisminic</text>
+<!-- Pre: outer ring (going to jurisdiction) -->
+<circle cx="160" cy="100" r="58" fill="none" stroke="#b4b2a9" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="160" y="152" text-anchor="middle" font-size="10" fill="#888780">Going to juris. = reviewable</text>
+<!-- Pre: inner circle (within jurisdiction) -->
+<circle cx="160" cy="100" r="36" fill="#f0efe9" stroke="#888780" stroke-width="1.2"/>
+<text x="160" y="94" text-anchor="middle" font-size="10" fill="#5f5e5a">Within juris.</text>
+<text x="160" y="107" text-anchor="middle" font-size="10" fill="#5f5e5a">NOT reviewable</text>
+<!-- Arrow -->
+<line x1="224" y1="100" x2="425" y2="100" stroke="#185fa5" stroke-width="2.5" marker-end="url(#bl)"/>
+<text x="325" y="90" text-anchor="middle" font-size="11" fill="#185fa5">Anisminic 1969</text>
+<!-- Post: single big circle ALL reviewable -->
+<circle cx="490" cy="100" r="58" fill="#e6f1fb" stroke="#185fa5" stroke-width="1.5"/>
+<text x="490" y="88" text-anchor="middle" font-size="11" font-weight="600" fill="#185fa5">ALL errors of law</text>
+<text x="490" y="103" text-anchor="middle" font-size="11" fill="#185fa5">= ultra vires</text>
+<text x="490" y="118" text-anchor="middle" font-size="11" fill="#185fa5">= REVIEWABLE</text>
+</svg>
+</div>
+
+<div class="scene">
+<div class="scene-label">Full ouster vs partial ouster — know the difference</div>
+<div class="vs-row">
+<div class="vs-col" style="border-left:3px solid #E24B4A">
+<div class="vs-head" style="color:#a32d2d">Full ouster — courts very suspicious</div>
+<div class="vs-item">Tries to exclude JR completely</div>
+<div class="vs-item">Needs "most clear and explicit words" (Privacy International)</div>
+<div class="vs-item">Anisminic: error = nullity = clause doesn't bite</div>
+<div class="vs-item">Almost always ineffective post-Anisminic</div>
+</div>
+<div class="vs-col" style="border-left:3px solid #3B6D11">
+<div class="vs-head" style="color:#3B6D11">Partial ouster — generally accepted</div>
+<div class="vs-item">Time limits (e.g. 6 weeks in planning)</div>
+<div class="vs-item">Restricts WHO can claim</div>
+<div class="vs-item">Ostler [1977]: time limits = valid</div>
+<div class="vs-item">s.11A TCFA 2007: Upper Tribunal Cart claims restricted</div>
+</div>
+</div>
+</div>
+
+<div class="scene">
+<div class="scene-label">Lord Reid's list — what makes a decision a NULLITY (Anisminic)</div>
+<div style="font-size:12px;color:#5f5e5a;margin-bottom:8px">Even if tribunal had jurisdiction to <em>start</em> inquiry, decision = nullity if it:</div>
+<div class="flow-box">1. Was made in bad faith</div>
+<div class="flow-box">2. Made a decision it had no power to make</div>
+<div class="flow-box">3. Failed to comply with natural justice</div>
+<div class="flow-box">4. Misconstrued provisions → decided the wrong question</div>
+<div class="flow-box">5. Refused to consider what it was required to consider</div>
+<div class="flow-box">6. Based decision on matter it had no right to take into account</div>
+<div style="font-size:11px;color:#888780;margin-top:6px;padding:6px 10px;background:#fff;border-radius:6px;border:0.5px solid #d3d1c7">Lord Reid: "I do not intend this list to be exhaustive."</div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 3: AVAILABILITY -->
+<div class="section">
+<div class="sec-title" style="border-color:#993C1D">🔍 3. Availability of JR — jurisdiction, amenability, justiciability</div>
+
+<div class="scene">
+<div class="scene-label">Three gate questions before JR succeeds</div>
+<svg width="100%" viewBox="0 0 640 84">
+<defs>
+<marker id="t1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round"/></marker>
+</defs>
+<rect x="10" y="14" width="185" height="56" rx="8" fill="#FAECE7" stroke="#993C1D" stroke-width="1"/>
+<text x="102" y="37" text-anchor="middle" font-size="13" font-weight="600" fill="#4A1B0C">Gate 1: Amenable?</text>
+<text x="102" y="55" text-anchor="middle" font-size="11" fill="#993C1D">Is body public? Public matter?</text>
+<line x1="195" y1="42" x2="228" y2="42" stroke="#888780" stroke-width="1.5" marker-end="url(#t1)"/>
+<rect x="230" y="14" width="180" height="56" rx="8" fill="#EEEDFE" stroke="#7F77DD" stroke-width="1"/>
+<text x="320" y="37" text-anchor="middle" font-size="13" font-weight="600" fill="#3C3489">Gate 2: Jurisdiction?</text>
+<text x="320" y="55" text-anchor="middle" font-size="11" fill="#534AB7">Error of law or fact?</text>
+<line x1="410" y1="42" x2="443" y2="42" stroke="#888780" stroke-width="1.5" marker-end="url(#t1)"/>
+<rect x="445" y="14" width="185" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="537" y="37" text-anchor="middle" font-size="13" font-weight="600" fill="#085041">Gate 3: Justiciable?</text>
+<text x="537" y="55" text-anchor="middle" font-size="11" fill="#0F6E56">Should courts decide this?</text>
+</svg>
+</div>
+
+<div class="scene">
+<div class="scene-label">Errors of law — the Anisminic revolution</div>
+<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
+<div style="flex:1;background:#fcebeb;border:0.5px solid #f09595;border-radius:6px;padding:8px 12px;font-size:12px;color:#791f1f">Pre-Anisminic: only errors "going to" jurisdiction reviewed</div>
+<div style="font-size:18px;color:#888780">→</div>
+<div style="flex:1;background:#eaf3de;border:0.5px solid #97c459;border-radius:6px;padding:8px 12px;font-size:12px;color:#27500a">Post-Anisminic: ALL errors of law = ultra vires = reviewable</div>
+</div>
+<div style="font-size:12px;color:#5f5e5a;padding:6px 10px;background:#fff;border-radius:6px;border:0.5px solid #d3d1c7">Lord Diplock in Re Racal [1981]: "The old distinction was for practical purposes abolished."</div>
+</div>
+
+<div class="scene">
+<div class="scene-label">Errors of fact — 3 grounds (less reviewable than law)</div>
+<div class="timeline-item">
+<div class="tl-dot" style="background:#e6f1fb;color:#185fa5;font-weight:700">1</div>
+<div class="tl-content">
+<div class="tl-title">Jurisdictional / precedent fact</div>
+<div class="tl-desc">Fact determines WHETHER body has jurisdiction → court reviews it. Is this person a "child"? → objective question, right/wrong answer = court decides. R(A) v Croydon [2009].</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="tl-dot" style="background:#e6f1fb;color:#185fa5;font-weight:700">2</div>
+<div class="tl-content">
+<div class="tl-title">Law/fact distinction — objective vs subjective</div>
+<div class="tl-desc">Is child "in need"? (Subjective/evaluative) → left to authority. Is person a "child"? (Objective) → court decides. Baroness Hale in R(A) v Croydon.</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="tl-dot" style="background:#e6f1fb;color:#185fa5;font-weight:700">3</div>
+<div class="tl-content">
+<div class="tl-title">Material error of fact — E v SSHD [2004]</div>
+<div class="tl-desc">4 requirements: (i) mistake as to existing fact; (ii) fact was established/uncontentious; (iii) claimant not responsible; (iv) mistake material to reasoning. Carnwath LJ.</div>
+<div style="margin-top:6px"><span class="must-badge">MUST KNOW — 4 requirements</span></div>
+</div>
+</div>
+</div>
+
+<div class="scene">
+<div class="scene-label">Justiciability — when courts REFUSE to decide</div>
+<svg width="100%" viewBox="0 0 640 165">
+<text x="320" y="22" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a18">Why courts defer (Young's framework)</text>
+<rect x="10" y="35" width="300" height="120" rx="8" fill="#EEEDFE" stroke="#7F77DD" stroke-width="1"/>
+<text x="160" y="60" text-anchor="middle" font-size="13" font-weight="600" fill="#3C3489">Constitutional limits</text>
+<text x="160" y="80" text-anchor="middle" font-size="11" fill="#534AB7">Separation of powers:</text>
+<text x="160" y="95" text-anchor="middle" font-size="11" fill="#534AB7">exec decisions = exec domain</text>
+<text x="160" y="115" text-anchor="middle" font-size="11" fill="#534AB7">Parliamentary sovereignty:</text>
+<text x="160" y="130" text-anchor="middle" font-size="11" fill="#534AB7">Parliament endorsed → stay out</text>
+<text x="160" y="147" text-anchor="middle" font-size="10" fill="#888780">e.g. CCSU [1985] (national security)</text>
+<rect x="330" y="35" width="300" height="120" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="1"/>
+<text x="480" y="60" text-anchor="middle" font-size="13" font-weight="600" fill="#085041">Institutional limits</text>
+<text x="480" y="80" text-anchor="middle" font-size="11" fill="#0F6E56">Institutional capacity:</text>
+<text x="480" y="95" text-anchor="middle" font-size="11" fill="#0F6E56">experts decide better than judges</text>
+<text x="480" y="115" text-anchor="middle" font-size="11" fill="#0F6E56">Polycentric questions:</text>
+<text x="480" y="130" text-anchor="middle" font-size="11" fill="#0F6E56">no right answer (resources, policy)</text>
+<text x="480" y="147" text-anchor="middle" font-size="10" fill="#888780">e.g. Pfizer [2002] (healthcare)</text>
+</svg>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- SECTION 4: THEORIES -->
+<div class="section">
+<div class="sec-title" style="border-color:#3B6D11">🧠 4. Theories of judicial review (Topic 2)</div>
+<div class="scene">
+<div class="scene-label">Two competing theories</div>
+<div class="vs-row">
+<div class="vs-col" style="border-left:3px solid #185fa5">
+<div class="vs-head" style="color:#185fa5">Ultra vires theory</div>
+<div class="vs-item">JR authorised by Parliament (express or implied)</div>
+<div class="vs-item">Constitutionally orthodox — supports sovereignty</div>
+<div class="vs-item">Parliament could theoretically abolish JR</div>
+<div class="vs-item">Modified: Parliament impliedly intends rule of law</div>
+<div style="margin-top:6px;font-size:11px;color:#888780">Forsyth &amp; Elliott — legitimacy of JR (2003)</div>
+</div>
+<div class="vs-col" style="border-left:3px solid #3B6D11">
+<div class="vs-head" style="color:#3B6D11">Common law theory</div>
+<div class="vs-item">JR = inherent jurisdiction of High Court</div>
+<div class="vs-item">Grounds fashioned by common law, not Parliament</div>
+<div class="vs-item">Strong version: courts could strike down primary legislation</div>
+<div class="vs-item">Weak version: accepts parliamentary sovereignty</div>
+<div style="margin-top:6px;font-size:11px;color:#888780">Jowell 1999; Allan 2002</div>
+</div>
+</div>
+<div style="margin-top:10px;font-size:12px;padding:10px 12px;background:#fff;border-radius:6px;border:0.5px solid #d3d1c7;color:#5f5e5a">
+<strong>Allan's critique:</strong> Both theories agree on more than they differ — debate is "futile." Focus should shift to defining rule of law content in our constitution.
+</div>
+</div>
+<div class="scene">
+<div class="scene-label">Red light vs green light (Harlow &amp; Rawlings)</div>
+<div class="vs-row">
+<div class="vs-col" style="border-left:3px solid #E24B4A">
+<div class="vs-head" style="color:#a32d2d">🔴 Red light</div>
+<div class="vs-item">Suspicious of state power</div>
+<div class="vs-item">Courts as protector of individual</div>
+<div class="vs-item">Judicial control preferred</div>
+<div class="vs-item">Links to Diceyan orthodoxy</div>
+</div>
+<div class="vs-col" style="border-left:3px solid #3B6D11">
+<div class="vs-head" style="color:#3B6D11">🟢 Green light</div>
+<div class="vs-item">Less suspicious of state</div>
+<div class="vs-item">Facilitate good administration</div>
+<div class="vs-item">Prefer political accountability</div>
+<div class="vs-item">Courts as obstruction to effectiveness</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- EXAM CHEAT SHEET -->
+<div class="section">
+<div class="sec-title" style="border-color:#E24B4A">📝 UOL Admin exam — must-know case list</div>
+<div class="scene">
+<div class="scene-label">Cases ranked by exam importance</div>
+<div class="key-case" style="border-left:4px solid #E24B4A">
+<div style="display:flex;gap:8px;align-items:center"><span class="must-badge">⭐ CRITICAL</span><span class="kc-name">Anisminic v FCC [1969]</span></div>
+<div class="kc-rule">All errors of law = nullity = reviewable. Ouster clause broken. Lord Reid's 6-point list. Abolished going-to / within jurisdiction distinction.</div>
+</div>
+<div class="key-case" style="border-left:4px solid #E24B4A">
+<div style="display:flex;gap:8px;align-items:center"><span class="must-badge">⭐ CRITICAL</span><span class="kc-name">Privacy International [2019] UKSC</span></div>
+<div class="kc-rule">JR excluded only by "most clear and explicit words." Lord Carnwath. Rule of law must be maintained. Reaffirmed Anisminic.</div>
+</div>
+<div class="key-case" style="border-left:4px solid #E24B4A">
+<div style="display:flex;gap:8px;align-items:center"><span class="must-badge">⭐ CRITICAL</span><span class="kc-name">O'Reilly v Mackman [1983]</span></div>
+<div class="kc-rule">Public law claim = must use AJR. Ordinary action = abuse of process. 3 exceptions (collateral, consent, case by case).</div>
+</div>
+<div class="key-case" style="border-left:3px solid #7F77DD">
+<div style="display:flex;gap:8px;align-items:center"><span class="case-badge">HIGH</span><span class="kc-name">Datafin [1987]</span></div>
+<div class="kc-rule">Nature of function test. Private body woven into governmental framework = susceptible to JR.</div>
+</div>
+<div class="key-case" style="border-left:3px solid #7F77DD">
+<div style="display:flex;gap:8px;align-items:center"><span class="case-badge">HIGH</span><span class="kc-name">E v SSHD [2004]</span></div>
+<div class="kc-rule">4-part test for material error of fact. Carnwath LJ. Learn all 4 requirements.</div>
+</div>
+<div class="key-case" style="border-left:3px solid #7F77DD">
+<div style="display:flex;gap:8px;align-items:center"><span class="case-badge">HIGH</span><span class="kc-name">R(A) v Croydon LBC [2009]</span></div>
+<div class="kc-rule">Objective fact (is X a child?) = court decides. Subjective (is child "in need"?) = authority decides. Baroness Hale.</div>
+</div>
+<div class="key-case" style="border-left:3px solid #185fa5">
+<div style="display:flex;gap:8px;align-items:center"><span class="case-badge">MED</span><span class="kc-name">Wandsworth v Winder [1984]</span></div>
+<div class="kc-rule">Collateral challenge in defence = right not discretion. Private contractual right → ordinary action.</div>
+</div>
+<div class="key-case" style="border-left:3px solid #185fa5">
+<div style="display:flex;gap:8px;align-items:center"><span class="case-badge">MED</span><span class="kc-name">Roy v Kensington FPC [1992]</span></div>
+<div class="kc-rule">Private law rights dominating → ordinary action allowed even with public law elements.</div>
+</div>
+<div class="key-case" style="border-left:3px solid #185fa5">
+<div style="display:flex;gap:8px;align-items:center"><span class="case-badge">MED</span><span class="kc-name">Aga Khan [1993]</span></div>
+<div class="kc-rule">Jockey Club NOT amenable. Not governmental enough. Limits Datafin.</div>
+</div>
+<div class="key-case" style="border-left:3px solid #185fa5">
+<div style="display:flex;gap:8px;align-items:center"><span class="case-badge">MED</span><span class="kc-name">R v Ostler [1977]</span></div>
+<div class="kc-rule">6-week planning time limit = valid partial ouster. Upheld.</div>
+</div>
+<div class="key-case" style="border-left:3px solid #888780">
+<div style="display:flex;gap:8px;align-items:center"><span style="font-size:11px;color:#888780">SUPPORT</span><span class="kc-name">Cocks v Thanet [1983]</span></div>
+<div class="kc-rule">Public law condition precedent to private right → use JR. Contrast with Winder.</div>
+</div>
+<div class="key-case" style="border-left:3px solid #888780">
+<div style="display:flex;gap:8px;align-items:center"><span style="font-size:11px;color:#888780">SUPPORT</span><span class="kc-name">Oceana [2023] / LA (Albania) [2023]</span></div>
+<div class="kc-rule">s.11A TCFA 2007: explicit Parliament exclusion of Cart-type JR upheld. "No one, including a court, is above the law." — Dingemans LJ.</div>
+</div>
+<div class="key-case" style="border-left:3px solid #888780">
+<div style="display:flex;gap:8px;align-items:center"><span style="font-size:11px;color:#888780">SUPPORT</span><span class="kc-name">CCSU [1985]</span></div>
+<div class="kc-rule">National security = non-justiciable. Courts defer. Classic justiciability case.</div>
+</div>
+</div>
+
+<div class="scene">
+<div class="scene-label">Quick essay structure guide</div>
+<div class="flow-box"><strong>Ouster clause essay:</strong> Intro (tension SovParl vs RoL) → Smith v East Elloe (deference) → Anisminic breakthrough → Privacy International reaffirmation → Partial ouster (Ostler, s.11A) → Oceana 2023 → Conclusion (context-specific)</div>
+<div class="flow-box" style="margin-top:6px"><strong>Procedural exclusivity essay:</strong> O'Reilly rule → Rationale → 3 Exceptions → Datafin (amenability) → Aga Khan (limits) → Roy/Winder (private rights) → Mercury (flexibility retained)</div>
+<div class="flow-box" style="margin-top:6px"><strong>Jurisdictional error essay:</strong> Going to / within distinction → Anisminic abolishes it → Re Racal / Page v Hull confirm → Errors of fact (3 categories) → E v SSHD 4-part test</div>
+</div>
+</div>
+
+</div>
+</body>
+</html>
